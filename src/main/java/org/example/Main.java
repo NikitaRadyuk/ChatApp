@@ -7,5 +7,7 @@ public class Main {
         System.out.println("Здравствуйте");
         System.out.println("Hello Pavel");
         System.out.println("Vlad");
+
+        System.out.println("Privet");
     }
 }
