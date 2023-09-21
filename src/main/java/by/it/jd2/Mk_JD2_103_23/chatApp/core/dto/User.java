@@ -15,17 +15,16 @@ public class User{
     private LocalDate registrDate;
     private Role role;
 
-    /*casasockm*/
     public User() {
     }
 
-    public User(String login, String password, String fullName, LocalDate birthday, LocalDate registrDate, Role role) {
+    public User(String login, String password, String fullName, LocalDate birthday) {
         this.login = login;
         this.password = password;
         this.fullName = fullName;
         this.birthday = birthday;
         registrDate = LocalDate.now();
-        this.role = role;
+        role = Role.USER;
     }
 
     public String getLogin() {
