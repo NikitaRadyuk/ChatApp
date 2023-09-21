@@ -15,6 +15,7 @@ public class User{
     private LocalDate registrDate;
     private Role role;
 
+    /*casasockm*/
     public User() {
     }
 
