@@ -18,7 +18,7 @@ public class User{
     public User() {
     }
 
-    public User(String login, String password, String fullName, LocalDate birthday, LocalDate registrDay, Role role) {
+    public User(String login, String password, String fullName, LocalDate birthday, LocalDate registrDate, Role role) {
         this.login = login;
         this.password = password;
         this.fullName = fullName;

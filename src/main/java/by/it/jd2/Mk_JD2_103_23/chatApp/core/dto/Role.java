@@ -13,7 +13,6 @@ public enum Role {
     Role(){
         roleId = 1;
     }
-
     Role(int roleId) {
         this.roleId = roleId;
     }

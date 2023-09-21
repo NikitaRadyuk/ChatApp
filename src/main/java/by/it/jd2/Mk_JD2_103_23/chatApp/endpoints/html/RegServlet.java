@@ -1,5 +1,6 @@
-package by.it.jd2.Mk_JD2_103_23.chatApp.endpoints.html.api;
+package by.it.jd2.Mk_JD2_103_23.chatApp.endpoints.html;
 
+import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,8 +12,8 @@ import java.io.IOException;
 /**
  * Сервлет, на который отправляются данные для регистрации при помощи POST запроса
  */
-@WebServlet(urlPatterns = "/userServlet")
-public class UserServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/api/registration")
+public class RegServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
