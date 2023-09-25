@@ -10,20 +10,20 @@ import java.util.Date;
 public class User{
     private String login;
     private String password;
-    private String fullName;
+    private String userName;
     private LocalDate birthday;
-    private LocalDate registrDate;
+    private LocalDate registerDate;
     private Role role;
 
     public User() {
     }
 
-    public User(String login, String password, String fullName, LocalDate birthday) {
+    public User(String login, String password, String userName, LocalDate birthday) {
         this.login = login;
         this.password = password;
-        this.fullName = fullName;
+        this.userName = userName;
         this.birthday = birthday;
-        registrDate = LocalDate.now();
+        registerDate = LocalDate.now();
         role = Role.USER;
     }
 
@@ -42,10 +42,10 @@ public class User{
     }
 
     public String getFullName() {
-        return fullName;
+        return userName;
     }
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public LocalDate getBirthday() {
@@ -55,11 +55,11 @@ public class User{
         this.birthday = birthday;
     }
 
-    public LocalDate getRegistrDate() {
-        return registrDate;
+    public LocalDate getRegisterDate() {
+        return registerDate;
     }
-    public void setRegistrDate(LocalDate registrDate) {
-        this.registrDate = registrDate;
+    public void setRegisterDate(LocalDate registerDate) {
+        this.registerDate = registerDate;
     }
 
     public Role getRole() {
@@ -81,6 +81,6 @@ public class User{
 
     @Override
     public String toString() {
-        return "User{login" + login + ", fullName=" + fullName + ", registrationDate=" + registrDate + "}";
+        return "User{login" + login + ", fullName=" + userName + ", registrationDate=" + registerDate + "}";
     }
 }
