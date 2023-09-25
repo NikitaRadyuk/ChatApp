@@ -83,4 +83,5 @@ public class User{
     public String toString() {
         return "User{login" + login + ", fullName=" + fullName + ", registrationDate=" + registrDate + "}";
     }
+
 }
