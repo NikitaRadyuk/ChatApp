@@ -4,6 +4,7 @@ import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.User;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.UserRegService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserRegService;
+import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.UserRegServiceFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -24,7 +25,7 @@ public class RegServlet extends HttpServlet {
     private static final String USER_PARAM_PASSWORD = "password";
     private static final String USER_PARAM_BIRTHDAY = "birthday";
 
-//    private IUserRegService userRegService = new UserRegService();
+    private IUserRegService userRegService = UserRegServiceFactory.getInstance();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -45,7 +46,7 @@ public class RegServlet extends HttpServlet {
 
 
         try {
-//            userRegService.save(user);
+           userRegService.save(user);
         }
         catch (IllegalArgumentException e){
             resp.setStatus(500);
