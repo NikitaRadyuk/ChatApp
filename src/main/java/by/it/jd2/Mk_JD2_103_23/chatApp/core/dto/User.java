@@ -3,6 +3,7 @@ package by.it.jd2.Mk_JD2_103_23.chatApp.core.dto;
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  * Класс-сущность Пользователь
@@ -70,17 +71,40 @@ public class User{
     }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (!Objects.equals(login, user.login)) return false;
+        if (!Objects.equals(password, user.password)) return false;
+        if (!Objects.equals(userName, user.userName)) return false;
+        if (!Objects.equals(birthday, user.birthday)) return false;
+        if (!Objects.equals(registerDate, user.registerDate)) return false;
+        return role == user.role;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public int hashCode() {
+        int result = login != null ? login.hashCode() : 0;
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (userName != null ? userName.hashCode() : 0);
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
+        result = 31 * result + (registerDate != null ? registerDate.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        return result;
     }
 
     @Override
     public String toString() {
-        return "User{login" + login + ", fullName=" + userName + ", registrationDate=" + registerDate + "}";
+        return "User{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", userName='" + userName + '\'' +
+                ", birthday=" + birthday +
+                ", registerDate=" + registerDate +
+                ", role=" + role +
+                '}';
     }
 }

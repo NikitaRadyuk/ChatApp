@@ -12,7 +12,7 @@ public class UserDao implements IUserDao {
 
     @Override
     public void saveUser(User user) {
-
+        this.users.add(user);
     }
 
     @Override

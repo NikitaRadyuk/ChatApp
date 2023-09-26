@@ -24,7 +24,7 @@ public class RegServlet extends HttpServlet {
     private static final String USER_PARAM_PASSWORD = "password";
     private static final String USER_PARAM_BIRTHDAY = "birthday";
 
-    private IUserRegService userRegService = new UserRegService();
+//    private IUserRegService userRegService = new UserRegService();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,11 +42,10 @@ public class RegServlet extends HttpServlet {
         user.setPassword(password);
         user.setUserName(username);
         user.setBirthday(LocalDate.parse(birthday));
-        user.setRegisterDate(LocalDate.now());
 
 
         try {
-            userRegService.save(user);
+//            userRegService.save(user);
         }
         catch (IllegalArgumentException e){
             resp.setStatus(500);

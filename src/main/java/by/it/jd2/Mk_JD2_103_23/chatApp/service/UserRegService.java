@@ -12,11 +12,15 @@ import java.util.List;
  */
 public class UserRegService implements IUserRegService {
 
-    private IUserDao userDao = new UserDao();
+    private IUserDao userDao;
+
+    public UserRegService(IUserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @Override
     public void save(User user) {
-
+        userDao.saveUser(user);
     }
 
     @Override
