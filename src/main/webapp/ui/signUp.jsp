@@ -16,7 +16,7 @@
     <title>Регистрация</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/registration" method="POST">
+<form action="${pageContext.request.contextPath}/ui/signUp.jsp" method="POST">
 
     <p style="text-align:center">Регистрация</p>
 
