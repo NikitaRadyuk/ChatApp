@@ -15,5 +15,4 @@ public interface IUserRegService {
     void save(User user);
 
     List<User> getAllUsers();
-
 }

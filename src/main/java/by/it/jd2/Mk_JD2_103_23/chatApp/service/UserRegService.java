@@ -24,7 +24,6 @@ public class UserRegService implements IUserRegService {
         if (user.getLogin()== null || user.getPassword() == null || user.getFullName() == null || user.getBirthday() == null){
             throw new IllegalArgumentException("Какое-то из полей при регистрации не введено");
         }
-
         userDao.saveUser(user);
     }
 

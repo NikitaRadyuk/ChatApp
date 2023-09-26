@@ -10,5 +10,7 @@ import java.util.List;
 public interface IUserDao {
     void saveUser(User user);
 
+    User getUserByLogin(String login, List<User> users);
+
     List<User> getAllUsers();
 }
