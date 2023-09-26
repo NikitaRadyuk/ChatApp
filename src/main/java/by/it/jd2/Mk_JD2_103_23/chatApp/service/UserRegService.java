@@ -15,6 +15,10 @@ public class UserRegService implements IUserRegService {
 
     private IUserDao userDao;
 
+    public UserRegService(IUserDao userDao) {
+        this.userDao = userDao;
+    }
+
     @Override
     public void save(User user) {
         if(user == null){

@@ -58,4 +58,3 @@ public class RegServlet extends HttpServlet {
         }
     }
 }
-
