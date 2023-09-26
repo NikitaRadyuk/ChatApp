@@ -13,13 +13,18 @@ import java.util.List;
  */
 public class UserRegService implements IUserRegService {
 
-    private IUserDao userDao = new UserDao();
+    private IUserDao userDao;
+
+    public UserRegService(IUserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @Override
     public void save(User user) {
         if(user == null){
             throw new IllegalArgumentException();
         }
+        userDao.saveUser(user);
     }
 
     @Override

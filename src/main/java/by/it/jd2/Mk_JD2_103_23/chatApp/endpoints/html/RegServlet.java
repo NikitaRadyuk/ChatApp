@@ -16,7 +16,7 @@ import java.time.LocalDate;
 /**
  * Сервлет, на который отправляются данные при регистрации при помощи POST запроса
  */
-@WebServlet(urlPatterns = "/api/registration")
+@WebServlet(urlPatterns = "/api/user")
 public class RegServlet extends HttpServlet {
 
     private static final String USER_PARAM_NAME = "username";
@@ -24,25 +24,28 @@ public class RegServlet extends HttpServlet {
     private static final String USER_PARAM_PASSWORD = "password";
     private static final String USER_PARAM_BIRTHDAY = "birthday";
 
-    private IUserRegService userRegService = new UserRegService();
+//    private IUserRegService userRegService = new UserRegService();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=utf-8");
         req.setCharacterEncoding("UTF-8");
 
-
-        String username = req.getParameter(USER_PARAM_NAME);
         String login = req.getParameter(USER_PARAM_LOGIN);
         String password = req.getParameter(USER_PARAM_PASSWORD);
+        String username = req.getParameter(USER_PARAM_NAME);
         String birthday = req.getParameter(USER_PARAM_BIRTHDAY);
 
-        User user = new User(login, password, username, LocalDate.parse(birthday));
+        User user = new User();
+
+        user.setLogin(login);
+        user.setPassword(password);
+        user.setUserName(username);
+        user.setBirthday(LocalDate.parse(birthday));
+
 
         try {
-            userRegService.save(user);
-
-
+//            userRegService.save(user);
         }
         catch (IllegalArgumentException e){
             resp.setStatus(500);
