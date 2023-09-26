@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao implements IUserDao {
-
     private final List<User> users = new ArrayList<>();
 
     @Override
@@ -23,3 +22,4 @@ public class UserDao implements IUserDao {
 
 //реализовать метод save()
 //пересмотреть объявление списка
+//потокобезопасный лист
