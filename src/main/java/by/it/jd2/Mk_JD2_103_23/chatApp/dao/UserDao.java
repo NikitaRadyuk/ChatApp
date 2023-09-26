@@ -11,7 +11,8 @@ public class UserDao implements IUserDao {
 
     @Override
     public void saveUser(User user) {
-        this.users.add(user.create());
+        this.users.add(user);
+        if()
     }
 
     @Override
