@@ -13,22 +13,13 @@ import java.util.List;
  */
 public class UserRegService implements IUserRegService {
 
-    private IUserDao userDao;
-
-    public UserRegService(IUserDao userDao) {
-        this.userDao = userDao;
-    }
+    private IUserDao userDao = new UserDao();
 
     @Override
     public void save(User user) {
         if(user == null){
-            throw new IllegalArgumentException("Нет информации о пользователе");
+            throw new IllegalArgumentException();
         }
-
-        if (user.getLogin()== null || user.getPassword() == null || user.getFullName() == null || user.getBirthday() == null){
-            throw new IllegalArgumentException("Какое-то из полей при регистрации не введено");
-        }
-        userDao.saveUser(user);
     }
 
     @Override
@@ -37,4 +28,4 @@ public class UserRegService implements IUserRegService {
     }
 }
 
-//добавить реализацию в метод save
+//реализовать метод save
