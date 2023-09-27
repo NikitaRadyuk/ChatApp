@@ -11,6 +11,5 @@ import java.util.List;
  */
 public interface IUserLoginService {
     void login(Credentials credentials);
-
     List<User> getAllUsers();
 }
