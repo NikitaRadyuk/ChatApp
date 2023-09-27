@@ -19,6 +19,12 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/api/login")
 public class loginServlet extends HttpServlet {
     private IUserLoginService userLoginService = new UserLoginService();
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
