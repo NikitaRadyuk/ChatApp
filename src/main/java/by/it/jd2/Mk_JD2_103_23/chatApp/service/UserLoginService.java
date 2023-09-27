@@ -21,7 +21,7 @@ public class UserLoginService implements IUserLoginService {
     public UserLoginService() {
     }
 
-    @Override
+    /*@Override
     public void login(Credentials credentials) {
         List<User> allUsers = getAllUsers();
         for (User user : allUsers) {
@@ -37,7 +37,7 @@ public class UserLoginService implements IUserLoginService {
                 }
             }
         }
-    }
+    }*/
 
     @Override
     public List<User> getAllUsers() {

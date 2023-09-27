@@ -1,6 +1,7 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.endpoints.html;
 
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.Credentials;
+import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.User;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.UserLoginService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserLoginService;
@@ -22,6 +23,8 @@ public class loginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("username", userLoginService);
+
         req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
     }
 
@@ -33,15 +36,24 @@ public class loginServlet extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        Credentials credentials = new Credentials();
+        /*Credentials credentials = new Credentials();
 
         credentials.setLogin(login);
-        credentials.setPassword(password);
+        credentials.setPassword(password);*/
 
         try {
-            userLoginService.login(credentials);
-            HttpSession session = req.getSession();
-            session.setAttribute("user", credentials);
+            /*userLoginService.login(credentials);*/
+            for (User user: userLoginService.getAllUsers()){
+                if (user.getLogin().equals(login) && user.getPassword().equals(password)){
+
+                    HttpSession session = req.getSession();
+                    session.setAttribute("loggedInUser", user);
+
+                    resp.sendRedirect("");
+                    return;
+                }
+            }
+
         }
         catch (IllegalArgumentException e){
             resp.setStatus(500);

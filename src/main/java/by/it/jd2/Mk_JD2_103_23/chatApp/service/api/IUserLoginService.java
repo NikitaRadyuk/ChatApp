@@ -10,6 +10,6 @@ import java.util.List;
  * Интерфейс, сервис для авторизации пользователя
  */
 public interface IUserLoginService {
-    void login(Credentials credentials);
+    /*void login(Credentials credentials);*/
     List<User> getAllUsers();
 }
