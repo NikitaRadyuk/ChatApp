@@ -22,7 +22,7 @@ public class UserRegService implements IUserRegService {
     @Override
     public void save(User user) {
         if(user == null){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Пользователь не создан");
         }
         userDao.saveUser(user);
     }

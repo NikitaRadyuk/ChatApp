@@ -29,8 +29,6 @@ public class RegServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
         req.getRequestDispatcher("/ui/signUp.jsp").forward(req,resp);
     }
 
@@ -66,4 +64,4 @@ public class RegServlet extends HttpServlet {
     }
 }
 
-//дополнить блок try{}
+//переход по кнопке на signIn.jsp

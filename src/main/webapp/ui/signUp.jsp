@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: HP
@@ -20,13 +21,26 @@
 
     <p style="text-align:center">Регистрация</p>
 
-    <p><input maxlength="15" name="Логин" required="required" size="10" type="text" value="login" /></p>
+    <label>Логин
+        <c:set var="login" />
+        <p><input maxlength="15" name="login" required="required" size="10" type="text" value="${login}" /></p>
+    </label>
 
-    <p><input maxlength="15" name="password" required="required" size="10" type="text" value="password" /></p>
+    <label>Пароль
+        <c:set var="password" />
+        <p><input maxlength="15" name="password" required="required" size="10" type="text" value="${password}" /></p>
+    </label>
 
-    <p><input maxlength="50" name="ФИО" required="required" size="10" type="text" value="username" /></p>
+    <label>ФИО
+        <c:set var="username" />
+        <p><input maxlength="50" name="ФИО" required="required" size="10" type="text" value="${username}" /></p>
+    </label>
 
-    <p><input maxlength="15" name="birthday" size="10" type="text" value="birthday" /></p>
+    <%--<label>
+        <c:set var="birthday" />
+        <p><input maxlength="15" name="birthday" size="10" type="text" value="${birthday}" /></p>
+    </label>--%>
+
 
     <p><input name="regBtn" type="submit" value="Зарегистрироваться" /></p>
 </form>
