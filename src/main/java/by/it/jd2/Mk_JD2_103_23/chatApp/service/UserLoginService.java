@@ -21,9 +21,14 @@ public class UserLoginService implements IUserLoginService {
     public UserLoginService() {
     }
 
+
     @Override
     public User login(Credentials credentials) {
         User value = new User();
+
+    /*@Override
+    public void login(Credentials credentials) {
+
         List<User> allUsers = getAllUsers();
         for (User user : allUsers) {
             String credentialsLogin = credentials.getLogin();
@@ -41,6 +46,7 @@ public class UserLoginService implements IUserLoginService {
         }
         return value;
     }
+    }*/
 
     @Override
     public List<User> getAllUsers() {

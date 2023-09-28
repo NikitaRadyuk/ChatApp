@@ -17,7 +17,7 @@ import java.time.LocalDate;
 /**
  * Сервлет, на который отправляются данные при регистрации при помощи POST запроса
  */
-@WebServlet(urlPatterns = "/api/user")
+@WebServlet(urlPatterns = "/api/reg")
 public class RegServlet extends HttpServlet {
 
     private static final String USER_PARAM_NAME = "username";
@@ -26,6 +26,11 @@ public class RegServlet extends HttpServlet {
     private static final String USER_PARAM_BIRTHDAY = "birthday";
 
     private IUserRegService userRegService = UserRegServiceFactory.getInstance();
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/ui/signUp.jsp").forward(req,resp);
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -47,6 +52,8 @@ public class RegServlet extends HttpServlet {
 
         try {
            userRegService.save(user);
+            //req.getRequestDispatcher(req.getContextPath() + "/api/login").forward(req,resp);
+           req.getRequestDispatcher("/ui/signIn.jsp").forward(req,resp);
         }
         catch (IllegalArgumentException e){
             resp.setStatus(500);
@@ -58,5 +65,3 @@ public class RegServlet extends HttpServlet {
         }
     }
 }
-
-//дополнить блок try{}

@@ -19,10 +19,19 @@ import java.io.IOException;
  */
 @WebServlet(urlPatterns = "/api/login")
 public class loginServlet extends HttpServlet {
+
     private static final String USER_PARAM_LOGIN = "login";
     private static final String USER_PARAM_PASSWORD = "password";
     private static final String SESSION_PARAM_ATTRIBUTE_NAME = "user";
+
     private IUserLoginService userLoginService = new UserLoginService();
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        /*req.setAttribute("loggedUser", user);*/
+        req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
@@ -31,14 +40,26 @@ public class loginServlet extends HttpServlet {
         String login = req.getParameter(USER_PARAM_LOGIN);
         String password = req.getParameter(USER_PARAM_PASSWORD);
 
-        Credentials credentials = new Credentials();
+        /*Credentials credentials = new Credentials();
 
         credentials.setLogin(login);
-        credentials.setPassword(password);
+        credentials.setPassword(password);*/
 
         try {
+
             User user = userLoginService.login(credentials);
             saveSession(req, SESSION_PARAM_ATTRIBUTE_NAME, user.getUserName());
+
+            /*userLoginService.login(credentials);*/
+            for (User user: userLoginService.getAllUsers()){
+                if (user.getLogin().equals(login) && user.getPassword().equals(password)){
+
+                    HttpSession session = req.getSession();
+                    session.setAttribute("loggedInUser", user);
+                    req.getRequestDispatcher(req.getContextPath() + "/api/message").forward(req,resp);
+                    return;
+                }
+            }
         }
         catch (IllegalArgumentException e){
             resp.setStatus(500);
