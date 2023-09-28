@@ -52,6 +52,8 @@ public class RegServlet extends HttpServlet {
 
         try {
            userRegService.save(user);
+            //req.getRequestDispatcher(req.getContextPath() + "/api/login").forward(req,resp);
+           req.getRequestDispatcher("/ui/signIn.jsp").forward(req,resp);
         }
         catch (IllegalArgumentException e){
             resp.setStatus(500);
@@ -63,5 +65,3 @@ public class RegServlet extends HttpServlet {
         }
     }
 }
-
-//переход по кнопке на signIn.jsp

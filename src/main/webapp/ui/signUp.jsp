@@ -36,7 +36,7 @@
         <p><input maxlength="50" name="ФИО" required="required" size="10" type="text" value="${username}" /></p>
     </label>
 
-    <label>
+    <label>День рождения
         <c:set var="birthday" />
         <p><input maxlength="15" name="birthday" size="10" type="text" value="${birthday}" /></p>
     </label>

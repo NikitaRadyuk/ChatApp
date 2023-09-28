@@ -22,11 +22,11 @@
 
     <p>Login:</p>
 
-    <p><input maxlength="15" name="login" required="required" size="10" type="text" value="login" /></p>
+    <p><input maxlength="15" name="login" required="required" size="10" type="text" placeholder="login"/></p>
 
     <p>Password:</p>
 
-    <p><input maxlength="15" name="password" required="required" size="10" type="password" value="password" /></p>
+    <p><input maxlength="15" name="password" required="required" size="10" type="password" placeholder="password"/></p>
 
     <p><input name="loginBtn" type="button" value="Login" /></p>
 

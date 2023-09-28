@@ -19,12 +19,15 @@ import java.io.IOException;
  */
 @WebServlet(urlPatterns = "/api/login")
 public class loginServlet extends HttpServlet {
+
+    private final static String LOGIN_PARAM_NAME = "login";
+    private final static String PASSWORD_PARAM_NAME = "password";
+
     private IUserLoginService userLoginService = new UserLoginService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("username", userLoginService);
-
+        /*req.setAttribute("loggedUser", user);*/
         req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
     }
 
@@ -33,8 +36,8 @@ public class loginServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=utf-8");
 
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
+        String login = req.getParameter(LOGIN_PARAM_NAME);
+        String password = req.getParameter(PASSWORD_PARAM_NAME);
 
         /*Credentials credentials = new Credentials();
 
@@ -48,8 +51,7 @@ public class loginServlet extends HttpServlet {
 
                     HttpSession session = req.getSession();
                     session.setAttribute("loggedInUser", user);
-
-                    resp.sendRedirect("");
+                    req.getRequestDispatcher(req.getContextPath() + "/api/message").forward(req,resp);
                     return;
                 }
             }

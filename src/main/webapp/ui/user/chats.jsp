@@ -17,7 +17,7 @@
     <title>Здесь будут отображаться сообщения, отправленные текущему пользователю</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/api" method="POST">
+<form action="${pageContext.request.contextPath}/api/message" method="POST">
 <h1>Hello, <%= ((User) request.getSession().getAttribute("loggedInUser")).getFullName()%>></h1>
 </form>
 </body>
