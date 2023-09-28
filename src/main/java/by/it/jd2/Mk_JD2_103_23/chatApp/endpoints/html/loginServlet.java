@@ -40,18 +40,22 @@ public class loginServlet extends HttpServlet {
         String login = req.getParameter(USER_PARAM_LOGIN);
         String password = req.getParameter(USER_PARAM_PASSWORD);
 
-        /*Credentials credentials = new Credentials();
+        Credentials credentials = new Credentials();
 
         credentials.setLogin(login);
-        credentials.setPassword(password);*/
+        credentials.setPassword(password);
 
         try {
 
             User user = userLoginService.login(credentials);
             saveSession(req, SESSION_PARAM_ATTRIBUTE_NAME, user.getUserName());
+            req.getRequestDispatcher("/ui/user/chats.jsp").forward(req,resp);
+
+
+
 
             /*userLoginService.login(credentials);*/
-            for (User user: userLoginService.getAllUsers()){
+            /*for (User user: userLoginService.getAllUsers()){
                 if (user.getLogin().equals(login) && user.getPassword().equals(password)){
 
                     HttpSession session = req.getSession();
@@ -59,7 +63,7 @@ public class loginServlet extends HttpServlet {
                     req.getRequestDispatcher(req.getContextPath() + "/api/message").forward(req,resp);
                     return;
                 }
-            }
+            }*/
         }
         catch (IllegalArgumentException e){
             resp.setStatus(500);
