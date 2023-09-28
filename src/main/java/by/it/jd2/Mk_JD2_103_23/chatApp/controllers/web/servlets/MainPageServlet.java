@@ -1,4 +1,4 @@
-package by.it.jd2.Mk_JD2_103_23.chatApp.endpoints.html;
+package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/ui/", loadOnStartup = 1)
-public class mainPageServlet extends HttpServlet {
+public class MainPageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/ui/index.jsp");

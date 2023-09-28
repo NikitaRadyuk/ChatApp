@@ -1,4 +1,4 @@
-package by.it.jd2.Mk_JD2_103_23.chatApp.endpoints.html;
+package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets;
 
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.Credentials;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.User;
@@ -18,7 +18,7 @@ import java.io.IOException;
  * Сервлет, на который отправляются данные для входа при помощи POST запроса
  */
 @WebServlet(urlPatterns = "/api/login")
-public class loginServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
     private static final String USER_PARAM_LOGIN = "login";
     private static final String USER_PARAM_PASSWORD = "password";
     private static final String SESSION_PARAM_ATTRIBUTE_NAME = "user";

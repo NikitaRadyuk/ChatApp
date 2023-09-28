@@ -1,8 +1,7 @@
-package by.it.jd2.Mk_JD2_103_23.chatApp.endpoints.html;
+package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets;
 
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.User;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
-import by.it.jd2.Mk_JD2_103_23.chatApp.service.UserRegService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserRegService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.UserRegServiceFactory;
 import jakarta.servlet.ServletException;
