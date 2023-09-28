@@ -18,11 +18,24 @@ import java.io.IOException;
  * Сервлет, на который отправляются данные для входа при помощи POST запроса
  */
 @WebServlet(urlPatterns = "/api/login")
+<<<<<<< HEAD:src/main/java/by/it/jd2/Mk_JD2_103_23/chatApp/controllers/web/servlets/LoginServlet.java
 public class LoginServlet extends HttpServlet {
+=======
+public class loginServlet extends HttpServlet {
+
+>>>>>>> 067a2e7befcb178c6f3478d08a38b5973a45d849:src/main/java/by/it/jd2/Mk_JD2_103_23/chatApp/endpoints/html/loginServlet.java
     private static final String USER_PARAM_LOGIN = "login";
     private static final String USER_PARAM_PASSWORD = "password";
     private static final String SESSION_PARAM_ATTRIBUTE_NAME = "user";
+
     private IUserLoginService userLoginService = new UserLoginService();
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //req.setAttribute("loggedUser", this.userLoginService.getAllUsers());
+        req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
@@ -37,8 +50,21 @@ public class LoginServlet extends HttpServlet {
         credentials.setPassword(password);
 
         try {
+
             User user = userLoginService.login(credentials);
             saveSession(req, SESSION_PARAM_ATTRIBUTE_NAME, user.getUserName());
+            req.getRequestDispatcher("/ui/user/chats.jsp").forward(req,resp);
+
+            /*userLoginService.login(credentials);*/
+            /*for (User user: userLoginService.getAllUsers()){
+                if (user.getLogin().equals(login) && user.getPassword().equals(password)){
+
+                    HttpSession session = req.getSession();
+                    session.setAttribute("loggedInUser", user);
+                    req.getRequestDispatcher(req.getContextPath() + "/api/message").forward(req,resp);
+                    return;
+                }
+            }*/
         }
         catch (IllegalArgumentException e){
             resp.setStatus(500);
@@ -55,3 +81,7 @@ public class LoginServlet extends HttpServlet {
         session.setAttribute(key, val);
     }
 }
+
+
+
+//в методе doGet указать setAttribute()
