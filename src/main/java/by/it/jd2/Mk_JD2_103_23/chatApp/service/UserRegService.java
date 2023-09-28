@@ -32,5 +32,3 @@ public class UserRegService implements IUserRegService {
         return this.userDao.getAllUsers();
     }
 }
-
-//реализовать метод save

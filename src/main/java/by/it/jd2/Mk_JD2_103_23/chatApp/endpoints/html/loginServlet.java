@@ -20,8 +20,9 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/api/login")
 public class loginServlet extends HttpServlet {
 
-    private final static String LOGIN_PARAM_NAME = "login";
-    private final static String PASSWORD_PARAM_NAME = "password";
+    private static final String USER_PARAM_LOGIN = "login";
+    private static final String USER_PARAM_PASSWORD = "password";
+    private static final String SESSION_PARAM_ATTRIBUTE_NAME = "user";
 
     private IUserLoginService userLoginService = new UserLoginService();
 
@@ -36,8 +37,8 @@ public class loginServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=utf-8");
 
-        String login = req.getParameter(LOGIN_PARAM_NAME);
-        String password = req.getParameter(PASSWORD_PARAM_NAME);
+        String login = req.getParameter(USER_PARAM_LOGIN);
+        String password = req.getParameter(USER_PARAM_PASSWORD);
 
         /*Credentials credentials = new Credentials();
 
@@ -45,6 +46,10 @@ public class loginServlet extends HttpServlet {
         credentials.setPassword(password);*/
 
         try {
+
+            User user = userLoginService.login(credentials);
+            saveSession(req, SESSION_PARAM_ATTRIBUTE_NAME, user.getUserName());
+
             /*userLoginService.login(credentials);*/
             for (User user: userLoginService.getAllUsers()){
                 if (user.getLogin().equals(login) && user.getPassword().equals(password)){
@@ -55,7 +60,6 @@ public class loginServlet extends HttpServlet {
                     return;
                 }
             }
-
         }
         catch (IllegalArgumentException e){
             resp.setStatus(500);
@@ -65,5 +69,10 @@ public class loginServlet extends HttpServlet {
             resp.setStatus(400);
             resp.getWriter().write(e.getMessage());
         }
+    }
+
+    public static void saveSession(HttpServletRequest req, String key, String val) {
+        HttpSession session = req.getSession();
+        session.setAttribute(key, val);
     }
 }
