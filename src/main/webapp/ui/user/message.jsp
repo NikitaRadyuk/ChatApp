@@ -16,14 +16,14 @@
 <body>
 
 <form action="${pageContext.request.contextPath}/api/message" method="post">
-<p style="text-align:center">Draw a message:</p>
+<p style="text-align:center">Write a message:</p>
 
 <p>To:</p>
-
-<p><input maxlength="15" name="To:" required="required" size="10" type="text" />.</p>
+    <c:set var="to" />
+<p><input maxlength="15" name="To:" required="required" size="10" type="text" /></p>
 
 <p>Your Text:</p>
-
+    <c:set var="text" />
 <p><textarea cols="10" name="text" required="required" rows="4"></textarea></p>
 
 <p><input name="send" type="submit" /></p>

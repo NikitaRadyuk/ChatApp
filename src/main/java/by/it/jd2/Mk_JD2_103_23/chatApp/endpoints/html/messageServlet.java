@@ -7,6 +7,7 @@ import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IMessageSendService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IMessageViewChatService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.MessageSendServiceFactory;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
+@WebServlet(urlPatterns = "/api/message")
 public class messageServlet extends HttpServlet {
     private static final String MESSAGE_PARAM_TO = "to";
     private static final String MESSAGE_PARAM_TEXT = "text";

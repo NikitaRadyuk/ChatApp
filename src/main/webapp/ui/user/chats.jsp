@@ -18,7 +18,14 @@
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/api/message" method="POST">
-<h1>Hello, <%= ((User) request.getSession().getAttribute("loggedInUser")).getFullName()%>></h1>
+
+    <p>Messages
+        <%=((User)request.getSession().getAttribute("user")).getUserName()%>
+    </p>
+
+    <p><input type="submit" name="reply to message"></p>
 </form>
 </body>
 </html>
+
+

@@ -21,11 +21,11 @@
     <p style="text-align:center">Authorization:</p>
 
     <p>Login:</p>
-
+    <c:set var="login" />
     <p><input maxlength="15" name="login" required="required" size="10" type="text" placeholder="login"/></p>
 
     <p>Password:</p>
-
+    <c:set var="password" />
     <p><input maxlength="15" name="password" required="required" size="10" type="password" placeholder="password"/></p>
 
     <p><input name="loginBtn" type="button" value="Login" /></p>
@@ -33,3 +33,6 @@
 </form>
 </body>
 </html>
+
+
+

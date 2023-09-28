@@ -28,7 +28,7 @@ public class loginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        /*req.setAttribute("loggedUser", user);*/
+        //req.setAttribute("loggedUser", this.userLoginService.getAllUsers());
         req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
     }
 
@@ -50,9 +50,6 @@ public class loginServlet extends HttpServlet {
             User user = userLoginService.login(credentials);
             saveSession(req, SESSION_PARAM_ATTRIBUTE_NAME, user.getUserName());
             req.getRequestDispatcher("/ui/user/chats.jsp").forward(req,resp);
-
-
-
 
             /*userLoginService.login(credentials);*/
             /*for (User user: userLoginService.getAllUsers()){
@@ -80,3 +77,7 @@ public class loginServlet extends HttpServlet {
         session.setAttribute(key, val);
     }
 }
+
+
+
+//в методе doGet указать setAttribute()
