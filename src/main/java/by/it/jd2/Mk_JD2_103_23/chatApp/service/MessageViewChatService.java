@@ -1,14 +1,18 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.service;
 
+import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.Message;
+import by.it.jd2.Mk_JD2_103_23.chatApp.dao.api.IMessageDao;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IMessageViewChatService;
+import java.util.List;
 
 /**
  * Реализация сервиса отображения чата
  */
 public class MessageViewChatService implements IMessageViewChatService {
+    private IMessageDao messageDao;
 
     @Override
-    public void viewChat() {
-
+    public List<Message> viewChat(String userName) {
+        return this.messageDao.viewChat(userName);
     }
 }

@@ -1,8 +1,12 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.service.api;
 
+import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.Message;
+
+import java.util.List;
+
 /**
  * Интерфейс, сервис для отображения чата
  */
 public interface IMessageViewChatService {
-    void viewChat(/*List messages*/);
+    List<Message> viewChat(String userName);
 }

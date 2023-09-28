@@ -28,6 +28,7 @@ public class User{
         role = Role.USER;
     }
 
+
     public String getLogin() {
         return login;
     }
@@ -42,7 +43,7 @@ public class User{
         this.password = password;
     }
 
-    public String getFullName() {
+    public String getUserName() {
         return userName;
     }
     public void setUserName(String userName) {

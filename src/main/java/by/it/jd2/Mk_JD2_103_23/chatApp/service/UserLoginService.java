@@ -22,7 +22,8 @@ public class UserLoginService implements IUserLoginService {
     }
 
     @Override
-    public void login(Credentials credentials) {
+    public User login(Credentials credentials) {
+        User value = new User();
         List<User> allUsers = getAllUsers();
         for (User user : allUsers) {
             String credentialsLogin = credentials.getLogin();
@@ -35,8 +36,10 @@ public class UserLoginService implements IUserLoginService {
                 if (!credentialsPassword.equals(userPassword)) {
                     throw new ValidationException("Неверный пароль");
                 }
+                value = user;
             }
         }
+        return value;
     }
 
     @Override
