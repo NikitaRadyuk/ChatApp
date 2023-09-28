@@ -1,4 +1,4 @@
-package by.it.jd2.Mk_JD2_103_23.chatApp.endpoints.filters;
+package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.filters;
 
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.Role;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.User;
