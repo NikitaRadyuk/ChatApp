@@ -48,8 +48,7 @@ public class LoginServlet extends HttpServlet {
         try {
             User user = userLoginService.login(credentials);
             saveSession(req, SESSION_PARAM_ATTRIBUTE_NAME, user.getUserName());
-            resp.sendRedirect("http://localhost:8080/ChatApp-1.0-SNAPSHOT/ui/user/chats.jsp");
-           /* req.getRequestDispatcher(req.getContextPath() + "/api/message").forward(req,resp);*/
+            req.getRequestDispatcher("/ui/uses/chats.jsp").forward(req,resp);
 
             /*userLoginService.login(credentials);*/
             /*for (User user: userLoginService.getAllUsers()){
