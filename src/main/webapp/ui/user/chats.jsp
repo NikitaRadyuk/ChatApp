@@ -20,7 +20,7 @@
 <form action="${pageContext.request.contextPath}/api/message" method="POST">
 
     <p>Messages
-        <c:out value="${user.getLogin()}">
+        <c:out value="${user.getLogin()}"/>
 
             <c:forEach items="${messages}" var="item">
                 <c:out value="${item}"/>
