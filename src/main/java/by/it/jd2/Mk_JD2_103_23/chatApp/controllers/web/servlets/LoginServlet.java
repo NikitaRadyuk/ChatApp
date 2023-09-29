@@ -46,10 +46,10 @@ public class LoginServlet extends HttpServlet {
         credentials.setPassword(password);
 
         try {
-
             User user = userLoginService.login(credentials);
             saveSession(req, SESSION_PARAM_ATTRIBUTE_NAME, user.getUserName());
-            req.getRequestDispatcher(req.getContextPath() + "/api/message").forward(req,resp);
+            resp.sendRedirect("http://localhost:8080/ChatApp-1.0-SNAPSHOT/ui/user/chats.jsp");
+           /* req.getRequestDispatcher(req.getContextPath() + "/api/message").forward(req,resp);*/
 
             /*userLoginService.login(credentials);*/
             /*for (User user: userLoginService.getAllUsers()){

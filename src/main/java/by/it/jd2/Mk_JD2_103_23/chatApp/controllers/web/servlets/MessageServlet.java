@@ -50,6 +50,7 @@ public class MessageServlet extends HttpServlet {
 
         try {
             messageSendService.send(message);
+            resp.sendRedirect("http://localhost:8080/ChatApp-1.0-SNAPSHOT/ui/user/message.jsp");
         }
         catch (IllegalArgumentException e){
             resp.setStatus(500);
