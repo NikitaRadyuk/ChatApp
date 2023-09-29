@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "api/message")
+@WebServlet(urlPatterns = "/api/message")
 public class MessageServlet extends HttpServlet {
 
     private static final String MESSAGE_PARAM_TO = "to";
