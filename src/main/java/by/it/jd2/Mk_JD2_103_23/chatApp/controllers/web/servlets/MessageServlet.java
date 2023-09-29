@@ -6,6 +6,7 @@ import by.it.jd2.Mk_JD2_103_23.chatApp.service.MessageViewChatService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IMessageSendService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IMessageViewChatService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.MessageSendServiceFactory;
+import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.MessageViewChatServiceFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -24,7 +25,7 @@ public class MessageServlet extends HttpServlet {
     private static final String SESSION_PARAM_ATTRIBUTE_NAME = "user";
 
     private IMessageSendService messageSendService = MessageSendServiceFactory.getInstance();
-    private IMessageViewChatService messageViewChatService = new MessageViewChatService();
+    private IMessageViewChatService messageViewChatService = MessageViewChatServiceFactory.getInstance();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userFromSession = getValueFromSession(req, SESSION_PARAM_ATTRIBUTE_NAME);

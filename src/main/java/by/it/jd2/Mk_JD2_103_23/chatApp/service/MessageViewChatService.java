@@ -11,6 +11,10 @@ import java.util.List;
 public class MessageViewChatService implements IMessageViewChatService {
     private IMessageDao messageDao;
 
+    public MessageViewChatService(IMessageDao messageDao) {
+        this.messageDao = messageDao;
+    }
+
     @Override
     public List<Message> viewChat(String userName) {
         return this.messageDao.viewChat(userName);
