@@ -12,7 +12,9 @@ public class AdminService implements IAdminService {
     private IMessageDao messageDao;
     private IActiveUsersDao activeUsersDao;
 
-    public AdminService() {
+    public AdminService(IMessageDao messageDao, IActiveUsersDao activeUsersDao) {
+        this.messageDao = messageDao;
+        this.activeUsersDao = activeUsersDao;
     }
 
     @Override
