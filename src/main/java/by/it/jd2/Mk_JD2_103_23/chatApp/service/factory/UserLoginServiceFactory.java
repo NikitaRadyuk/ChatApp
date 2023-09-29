@@ -1,4 +1,4 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.service.factory;
 
-public class UserLoginFactory {
+public class UserLoginServiceFactory {
 }
