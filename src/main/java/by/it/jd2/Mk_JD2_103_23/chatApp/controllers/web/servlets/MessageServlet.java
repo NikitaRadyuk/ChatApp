@@ -15,8 +15,10 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "api/message")
+
+@WebServlet(urlPatterns = "/api/message")
 public class MessageServlet extends HttpServlet {
+
     private static final String MESSAGE_PARAM_TO = "to";
     private static final String MESSAGE_PARAM_TEXT = "text";
     private static final String SESSION_PARAM_ATTRIBUTE_NAME = "user";
@@ -27,7 +29,8 @@ public class MessageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String userFromSession = getValueFromSession(req, SESSION_PARAM_ATTRIBUTE_NAME);
 
-        req.setAttribute("chat", this.messageViewChatService.viewChat(userFromSession));
+        req.setAttribute("user", userFromSession);
+        req.setAttribute("messages", this.messageViewChatService.viewChat(userFromSession));
         req.getRequestDispatcher("/ui/user/chats.jsp").forward(req, resp);
     }
     @Override

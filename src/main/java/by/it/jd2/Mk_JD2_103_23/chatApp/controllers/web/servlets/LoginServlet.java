@@ -48,7 +48,7 @@ public class LoginServlet extends HttpServlet {
 
             User user = userLoginService.login(credentials);
             saveSession(req, SESSION_PARAM_ATTRIBUTE_NAME, user.getUserName());
-            req.getRequestDispatcher("/ui/user/chats.jsp").forward(req,resp);
+            req.getRequestDispatcher(req.getContextPath() + "/api/message").forward(req,resp);
 
             /*userLoginService.login(credentials);*/
             /*for (User user: userLoginService.getAllUsers()){

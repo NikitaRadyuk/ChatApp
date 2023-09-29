@@ -5,10 +5,7 @@
         xsi:schemaLocation = "https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
         version = "5.0"
         metadata-complete = "false">
-<<<<<<< HEAD
 
-=======
->>>>>>> 067a2e7befcb178c6f3478d08a38b5973a45d849
     <display-name>Chat Application</display-name>
     <description>There you can choose your preferences</description>
 

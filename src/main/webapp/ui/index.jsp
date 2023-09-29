@@ -17,13 +17,13 @@
     <title>Главная страница</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/api" method="POST">
+<form action="${pageContext.request.contextPath}/api/" method="POST">
 <p>Login:</p>
 <input type="hidden" name="Login"/>
 <p><input name="loginBtn" type="submit" value="Login" />
 </p>
 </form>
-<form action="${pageContext.request.contextPath}/api" method="POST">
+<form action="${pageContext.request.contextPath}/api/" method="POST">
 <p>Registration:</p>
     <input type="hidden" name="Registration"/>
 <p><input name="regBtn" type="submit" value="Registration" /></p>

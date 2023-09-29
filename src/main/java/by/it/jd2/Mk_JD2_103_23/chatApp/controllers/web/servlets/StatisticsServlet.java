@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "api/admin/statistics")
+@WebServlet(urlPatterns = "/api/admin/statistics")
 public class StatisticsServlet extends HttpServlet {
     private IAdminService adminService = new AdminService();
     @Override
