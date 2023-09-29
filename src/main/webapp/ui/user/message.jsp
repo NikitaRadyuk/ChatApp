@@ -15,12 +15,12 @@
 </head>
 <body>
 
-<form action="${pageContext.request.contextPath}/api/message" method="post">
+<form action="${pageContext.request.contextPath}/api/message" method="POST">
 <p style="text-align:center">Write a message:</p>
 
 <p>To:</p>
     <c:set var="to" />
-<p><input maxlength="15" name="To:" required="required" size="10" type="text" /></p>
+<p><input maxlength="15" name="to" required="required" size="10" type="text" /></p>
 
 <p>Your Text:</p>
     <c:set var="text" />

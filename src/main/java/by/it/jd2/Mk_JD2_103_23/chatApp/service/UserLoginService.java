@@ -24,14 +24,12 @@ public class UserLoginService implements IUserLoginService {
 
     @Override
     public User login(Credentials credentials) {
-        User value = new User();
+        User value = null;
         List<User> allUsers = getAllUsers();
         for (User user : allUsers) {
             String credentialsLogin = credentials.getLogin();
             String userLogin = user.getLogin();
-            if (!credentialsLogin.equals(userLogin)) {
-                throw new ValidationException("Пользователь не найден");
-            } else {
+            if (credentialsLogin.equals(userLogin)) {
                 String credentialsPassword = credentials.getPassword();
                 String userPassword = user.getPassword();
                 if (!credentialsPassword.equals(userPassword)) {
@@ -39,6 +37,9 @@ public class UserLoginService implements IUserLoginService {
                 }
                 value = user;
             }
+        }
+        if (value == null){
+            throw new ValidationException("Пользователь не найден");
         }
         return value;
     }

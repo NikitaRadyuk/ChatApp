@@ -17,10 +17,14 @@ public class UserSecurityFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         String contextPath = req.getContextPath();
         HttpSession session = req.getSession();
-        if((session != null) && (session.getAttribute("user") != null)){
+        if (session == null) {
+            res.sendRedirect(contextPath + "/api/reg");
+        }
+        if ((session != null) && (session.getAttribute("user") != null)) {
             filterChain.doFilter(request, response);
         } else {
-            res.sendRedirect(contextPath + "/signIn");
+            res.sendRedirect(contextPath + "/api/");
         }
+
     }
 }

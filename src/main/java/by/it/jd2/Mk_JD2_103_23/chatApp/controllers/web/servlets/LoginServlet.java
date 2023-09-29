@@ -48,19 +48,11 @@ public class LoginServlet extends HttpServlet {
         try {
 
             User user = userLoginService.login(credentials);
-            saveSession(req, SESSION_PARAM_ATTRIBUTE_NAME, user.getUserName());
-            req.getRequestDispatcher(req.getContextPath() + "/api/message").forward(req,resp);
+            HttpSession session = req.getSession();
+            session.setAttribute("user", user.getLogin());
 
-            /*userLoginService.login(credentials);*/
-            /*for (User user: userLoginService.getAllUsers()){
-                if (user.getLogin().equals(login) && user.getPassword().equals(password)){
-
-                    HttpSession session = req.getSession();
-                    session.setAttribute("loggedInUser", user);
-                    req.getRequestDispatcher(req.getContextPath() + "/api/message").forward(req,resp);
-                    return;
-                }
-            }*/
+            /*req.getRequestDispatcher("/ui/user/chats.jsp").forward(req,resp);*/
+            resp.sendRedirect(req.getContextPath() + "/api/message");
         }
         catch (IllegalArgumentException e){
             resp.setStatus(500);

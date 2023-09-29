@@ -17,16 +17,16 @@
     <title>Здесь будут отображаться сообщения, отправленные текущему пользователю</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/api/message" method="POST">
+
 
     <p>Messages
-        <c:out value="${user.getLogin()}">
+        <c:out value="${user}"/>
 
             <c:forEach items="${messages}" var="item">
                 <c:out value="${item}"/>
             </c:forEach>
     </p>
-
+    <form action="${pageContext.request.contextPath}/api/sendMessage" method="GET">
     <p><input type="submit" name="reply to message"></p>
 </form>
 </body>
