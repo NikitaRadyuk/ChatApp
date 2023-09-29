@@ -51,6 +51,9 @@ public class RegServlet extends HttpServlet {
 
         try {
            userRegService.save(user);
+
+            resp.getWriter().write(userRegService.getAllUsers().size());
+
             //req.getRequestDispatcher(req.getContextPath() + "/api/login").forward(req,resp);
             //req.getRequestDispatcher("/ui/signIn.jsp").forward(req,resp);
             resp.sendRedirect(req.getContextPath() + "/api/login");
