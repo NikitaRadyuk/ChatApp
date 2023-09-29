@@ -9,16 +9,10 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-<<<<<<< HEAD:src/main/java/by/it/jd2/Mk_JD2_103_23/chatApp/controllers/web/servlets/MainPageServlet.java
-@WebServlet(urlPatterns = "/ui/", loadOnStartup = 1)
+@WebServlet(urlPatterns = "/api/", loadOnStartup = 1)
 public class MainPageServlet extends HttpServlet {
-=======
-@WebServlet(urlPatterns = "/api", loadOnStartup = 1)
-public class mainPageServlet extends HttpServlet {
->>>>>>> 067a2e7befcb178c6f3478d08a38b5973a45d849:src/main/java/by/it/jd2/Mk_JD2_103_23/chatApp/endpoints/html/mainPageServlet.java
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
 
         req.getRequestDispatcher("/ui/index.jsp").forward(req,resp);
     }

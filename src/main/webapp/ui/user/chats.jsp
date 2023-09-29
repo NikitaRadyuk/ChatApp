@@ -20,7 +20,11 @@
 <form action="${pageContext.request.contextPath}/api/message" method="POST">
 
     <p>Messages
-        <%=((User)request.getSession().getAttribute("user")).getUserName()%>
+        <c:out value="${user.getLogin()}">
+
+            <c:forEach items="${messages}" var="item">
+                <c:out value="${item}"/>
+            </c:forEach>
     </p>
 
     <p><input type="submit" name="reply to message"></p>

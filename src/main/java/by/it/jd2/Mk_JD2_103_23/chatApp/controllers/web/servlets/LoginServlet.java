@@ -18,12 +18,7 @@ import java.io.IOException;
  * Сервлет, на который отправляются данные для входа при помощи POST запроса
  */
 @WebServlet(urlPatterns = "/api/login")
-<<<<<<< HEAD:src/main/java/by/it/jd2/Mk_JD2_103_23/chatApp/controllers/web/servlets/LoginServlet.java
 public class LoginServlet extends HttpServlet {
-=======
-public class loginServlet extends HttpServlet {
-
->>>>>>> 067a2e7befcb178c6f3478d08a38b5973a45d849:src/main/java/by/it/jd2/Mk_JD2_103_23/chatApp/endpoints/html/loginServlet.java
     private static final String USER_PARAM_LOGIN = "login";
     private static final String USER_PARAM_PASSWORD = "password";
     private static final String SESSION_PARAM_ATTRIBUTE_NAME = "user";
