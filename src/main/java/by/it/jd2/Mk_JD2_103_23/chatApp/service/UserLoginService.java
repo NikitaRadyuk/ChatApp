@@ -18,9 +18,9 @@ public class UserLoginService implements IUserLoginService {
      */
     private IUserDao userDao;
 
-    public UserLoginService() {
+    public UserLoginService(IUserDao userDao) {
+        this.userDao = userDao;
     }
-
 
     @Override
     public User login(Credentials credentials) {

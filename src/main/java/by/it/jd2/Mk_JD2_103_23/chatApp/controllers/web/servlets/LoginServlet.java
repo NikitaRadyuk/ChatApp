@@ -5,6 +5,7 @@ import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.User;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.UserLoginService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserLoginService;
+import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.UserLoginServiceFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,7 +24,7 @@ public class LoginServlet extends HttpServlet {
     private static final String USER_PARAM_PASSWORD = "password";
     private static final String SESSION_PARAM_ATTRIBUTE_NAME = "user";
 
-    private IUserLoginService userLoginService = new UserLoginService();
+    private IUserLoginService userLoginService = UserLoginServiceFactory.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
