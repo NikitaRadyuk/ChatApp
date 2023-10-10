@@ -1,9 +1,7 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.service.factory;
 
 import by.it.jd2.Mk_JD2_103_23.chatApp.dao.factory.MessageDaoFactory;
-import by.it.jd2.Mk_JD2_103_23.chatApp.service.MessageSendService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.MessageViewChatService;
-import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IMessageSendService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IMessageViewChatService;
 
 public class MessageViewChatServiceFactory {

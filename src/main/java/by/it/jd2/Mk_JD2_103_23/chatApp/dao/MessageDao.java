@@ -1,6 +1,6 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.dao;
 
-import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.Message;
+import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.Message;
 import by.it.jd2.Mk_JD2_103_23.chatApp.dao.api.IMessageDao;
 
 import java.util.*;
@@ -13,8 +13,8 @@ public class MessageDao implements IMessageDao {
         this.messages.compute(message.getToUser(), (k, v) -> v != null ? v : new ArrayList<>()).add(message);
     }
     @Override
-    public List<Message> viewChat(String userName) {
-        return this.messages.get(userName);
+    public List<Message> viewChat(String login) {
+        return this.messages.get(login);
     }
 
     @Override

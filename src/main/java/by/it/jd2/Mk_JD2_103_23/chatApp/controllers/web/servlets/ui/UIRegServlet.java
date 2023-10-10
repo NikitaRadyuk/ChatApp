@@ -1,6 +1,6 @@
-package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets;
+package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets.ui;
 
-import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.User;
+import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserRegService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.UserRegServiceFactory;
@@ -17,7 +17,7 @@ import java.time.LocalDate;
  * Сервлет, на который отправляются данные при регистрации при помощи POST запроса
  */
 @WebServlet(urlPatterns = "/api/reg")
-public class RegServlet extends HttpServlet {
+public class UIRegServlet extends HttpServlet {
 
     private static final String USER_PARAM_NAME = "username";
     private static final String USER_PARAM_LOGIN = "login";

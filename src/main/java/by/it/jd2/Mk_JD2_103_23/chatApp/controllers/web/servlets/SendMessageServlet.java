@@ -8,8 +8,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-import static by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets.MessageServlet.getValueFromSession;
-
 @WebServlet(urlPatterns = "/api/sendMessage")
 public class SendMessageServlet extends HttpServlet {
     @Override

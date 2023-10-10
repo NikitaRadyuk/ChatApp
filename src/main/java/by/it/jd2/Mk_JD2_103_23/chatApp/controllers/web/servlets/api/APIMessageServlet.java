@@ -1,12 +1,9 @@
-package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets;
+package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets.api;
 
-import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.Message;
+import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.Message;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
-import by.it.jd2.Mk_JD2_103_23.chatApp.service.MessageViewChatService;
-import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IMessageSendService;
-import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IMessageViewChatService;
+import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IMessageService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.MessageSendServiceFactory;
-import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.MessageViewChatServiceFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,22 +15,18 @@ import java.io.IOException;
 
 
 @WebServlet(urlPatterns = "/api/message")
-public class MessageServlet extends HttpServlet {
+public class APIMessageServlet extends HttpServlet {
 
     private static final String MESSAGE_PARAM_TO = "to";
     private static final String MESSAGE_PARAM_TEXT = "text";
     private static final String SESSION_PARAM_ATTRIBUTE_NAME = "user";
 
-    private IMessageSendService messageSendService = MessageSendServiceFactory.getInstance();
-    private IMessageViewChatService messageViewChatService = MessageViewChatServiceFactory.getInstance();
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userFromSession = getValueFromSession(req, SESSION_PARAM_ATTRIBUTE_NAME);
+    private IMessageService messageSendService;
 
-        req.setAttribute("user", userFromSession);
-        req.setAttribute("messages", this.messageViewChatService.viewChat(userFromSession));
-        req.getRequestDispatcher("/ui/user/chats.jsp").forward(req, resp);
+    public APIMessageServlet(){
+        this.messageSendService = MessageSendServiceFactory.getInstance();
     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=utf-8");
@@ -49,7 +42,7 @@ public class MessageServlet extends HttpServlet {
         message.setText(messageText);
 
         try {
-            messageSendService.send(message);
+            this.messageSendService.send(message);
         }
         catch (IllegalArgumentException e){
             resp.setStatus(500);
@@ -59,6 +52,7 @@ public class MessageServlet extends HttpServlet {
             resp.setStatus(400);
             resp.getWriter().write(e.getMessage());
         }
+        req.getRequestDispatcher("/ui/user/message.jsp").forward(req, resp);
     }
 
     public static String getValueFromSession(HttpServletRequest req, String key) {

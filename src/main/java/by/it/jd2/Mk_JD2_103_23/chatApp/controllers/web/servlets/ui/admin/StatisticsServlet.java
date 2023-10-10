@@ -1,4 +1,4 @@
-package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets;
+package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets.ui.admin;
 
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IAdminService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.AdminServiceFactory;
@@ -13,6 +13,11 @@ import java.io.IOException;
 @WebServlet(urlPatterns = "/api/admin/statistics")
 public class StatisticsServlet extends HttpServlet {
     private IAdminService adminService = AdminServiceFactory.getInstance();
+
+    public StatisticsServlet(IAdminService adminService) {
+        this.adminService = StatisticsService.getInstance();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("messages", this.adminService.getMessageCount());

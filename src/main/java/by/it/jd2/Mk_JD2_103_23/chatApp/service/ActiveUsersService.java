@@ -1,3 +1,4 @@
+/*
 package by.it.jd2.Mk_JD2_103_23.chatApp.service;
 
 import by.it.jd2.Mk_JD2_103_23.chatApp.dao.api.IActiveUsersDao;
@@ -18,3 +19,4 @@ public class ActiveUsersService implements IActiveUsersService {
        activeUsersDao.putActiveUser(user);
     }
 }
+*/

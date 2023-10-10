@@ -1,6 +1,6 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.service;
 
-import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.Message;
+import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.Message;
 import by.it.jd2.Mk_JD2_103_23.chatApp.dao.api.IMessageDao;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IMessageViewChatService;
 import java.util.List;

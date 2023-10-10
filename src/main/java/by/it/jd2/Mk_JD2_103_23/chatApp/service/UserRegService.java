@@ -1,12 +1,10 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.service;
 
-import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.User;
-import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
-import by.it.jd2.Mk_JD2_103_23.chatApp.dao.UserDao;
+import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
 import by.it.jd2.Mk_JD2_103_23.chatApp.dao.api.IUserDao;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserRegService;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * Реализация регистрации пользователя
@@ -28,7 +26,7 @@ public class UserRegService implements IUserRegService {
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public Collection<User> getAllUsers() {
         return this.userDao.getAllUsers();
     }
 }

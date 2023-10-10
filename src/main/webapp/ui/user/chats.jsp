@@ -1,4 +1,4 @@
-<%@ page import="by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.User" %><%--
+<%@ page import="by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: HP
   Date: 22.09.2023

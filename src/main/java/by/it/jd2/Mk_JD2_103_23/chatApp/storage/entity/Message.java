@@ -1,5 +1,6 @@
-package by.it.jd2.Mk_JD2_103_23.chatApp.core.dto;
+package by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -7,7 +8,7 @@ import java.util.Objects;
  * Сущность Сообщение
  */
 
-public class Message {
+public class Message implements Serializable {
     private LocalDateTime sendingDateTime;
     private String fromUser;
     private String toUser;

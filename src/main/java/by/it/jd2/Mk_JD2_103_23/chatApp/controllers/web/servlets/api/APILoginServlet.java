@@ -1,9 +1,8 @@
-package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets;
+package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets.api;
 
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.Credentials;
-import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.User;
+import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
-import by.it.jd2.Mk_JD2_103_23.chatApp.service.UserLoginService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserLoginService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.UserLoginServiceFactory;
 import jakarta.servlet.ServletException;
@@ -19,18 +18,11 @@ import java.io.IOException;
  * Сервлет, на который отправляются данные для входа при помощи POST запроса
  */
 @WebServlet(urlPatterns = "/api/login")
-public class LoginServlet extends HttpServlet {
+public class APILoginServlet extends HttpServlet {
     private static final String USER_PARAM_LOGIN = "login";
     private static final String USER_PARAM_PASSWORD = "password";
-    private static final String SESSION_PARAM_ATTRIBUTE_NAME = "user";
 
     private IUserLoginService userLoginService = UserLoginServiceFactory.getInstance();
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //req.setAttribute("loggedUser", this.userLoginService.getAllUsers());
-        req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
-    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -46,12 +38,10 @@ public class LoginServlet extends HttpServlet {
         credentials.setPassword(password);
 
         try {
-
             User user = userLoginService.login(credentials);
             HttpSession session = req.getSession();
             session.setAttribute("user", user.getLogin());
 
-            /*req.getRequestDispatcher("/ui/user/chats.jsp").forward(req,resp);*/
             resp.sendRedirect(req.getContextPath() + "/api/message");
         }
         catch (IllegalArgumentException e){
