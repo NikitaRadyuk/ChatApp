@@ -47,4 +47,8 @@ public class StatisticsService implements IStatisticsService {
         stats.put("Количество активных пользователей", this.getSessionCount());
         return stats;
     }
+
+    public static StatisticsService getInstance(){
+        return instance;
+    }
 }
