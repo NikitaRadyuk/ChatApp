@@ -1,7 +1,7 @@
-package by.it.jd2.Mk_JD2_103_23.chatApp.dao;
+package by.it.jd2.Mk_JD2_103_23.chatApp.storage.dao;
 
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
-import by.it.jd2.Mk_JD2_103_23.chatApp.dao.api.IUserDao;
+import by.it.jd2.Mk_JD2_103_23.chatApp.storage.dao.api.IUserDao;
 
 import java.util.*;
 
@@ -22,7 +22,7 @@ public class UserDao implements IUserDao {
     }
 
     @Override
-    public User get(String login) {
+    public User getUser(String login) {
         return this.users.get(login);
     }
 

@@ -1,9 +1,10 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.service.api;
 
-/**
- * Сервис для получения статистики
- */
+import java.util.Map;
+
 public interface IStatisticsService {
-    Integer getActiveUsers();
-    Integer getMessageCount();
+    long incSessionCount();
+    long decSessionCount();
+    long getSessionCount();
+    Map<String, Object> getStats();
 }

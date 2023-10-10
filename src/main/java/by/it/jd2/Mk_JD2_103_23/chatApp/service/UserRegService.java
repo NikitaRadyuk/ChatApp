@@ -1,9 +1,12 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.service;
 
+import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.UserCreateDTO;
+import by.it.jd2.Mk_JD2_103_23.chatApp.storage.dao.api.IUserDao;
+import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.Role;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
-import by.it.jd2.Mk_JD2_103_23.chatApp.dao.api.IUserDao;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserRegService;
 
+import java.time.LocalDate;
 import java.util.Collection;
 
 /**
@@ -11,22 +14,42 @@ import java.util.Collection;
  */
 public class UserRegService implements IUserRegService {
 
-    private IUserDao userDao;
+    private final IUserDao userDao;
 
     public UserRegService(IUserDao userDao) {
         this.userDao = userDao;
     }
 
     @Override
-    public void save(User user) {
-        if(user == null){
-            throw new IllegalArgumentException("Пользователь не создан");
+    public User getUser(String login) {
+        return this.userDao.getUser(login);
+    }
+
+    @Override
+    public User sighUp(UserCreateDTO user) {
+        if (user.getLogin() == null || user.getPassword() == null || user.getFullname() == null || user.getBirthday() == null){
+            throw new IllegalArgumentException("Проверьте форму заполнения. Все поля должны быть заполнены");
         }
-        userDao.saveUser(user);
+        User userEntity = new User();
+        userEntity.setLogin(user.getLogin());
+        userEntity.setPassword(user.getPassword());
+        userEntity.setUserName(user.getFullname());
+        userEntity.setBirthday(user.getBirthday());
+        userEntity.setRegisterDate(LocalDate.now());
+        userEntity.setRole(Role.USER);
+
+        this.userDao.saveUser(userEntity);
+
+        return userEntity;
     }
 
     @Override
     public Collection<User> getAllUsers() {
         return this.userDao.getAllUsers();
+    }
+
+    @Override
+    public long getCount() {
+        return this.userDao.getCount();
     }
 }

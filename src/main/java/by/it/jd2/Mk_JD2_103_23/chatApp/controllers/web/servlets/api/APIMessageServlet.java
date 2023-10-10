@@ -3,7 +3,7 @@ package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets.api;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.Message;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IMessageService;
-import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.MessageSendServiceFactory;
+import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.MessageServiceFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -24,7 +24,7 @@ public class APIMessageServlet extends HttpServlet {
     private IMessageService messageSendService;
 
     public APIMessageServlet(){
-        this.messageSendService = MessageSendServiceFactory.getInstance();
+        this.messageSendService = MessageServiceFactory.getInstance();
     }
 
     @Override

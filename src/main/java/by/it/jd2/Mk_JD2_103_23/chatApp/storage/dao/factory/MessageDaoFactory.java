@@ -1,7 +1,7 @@
-package by.it.jd2.Mk_JD2_103_23.chatApp.dao.factory;
+package by.it.jd2.Mk_JD2_103_23.chatApp.storage.dao.factory;
 
-import by.it.jd2.Mk_JD2_103_23.chatApp.dao.MessageDao;
-import by.it.jd2.Mk_JD2_103_23.chatApp.dao.api.IMessageDao;
+import by.it.jd2.Mk_JD2_103_23.chatApp.storage.dao.MessageDao;
+import by.it.jd2.Mk_JD2_103_23.chatApp.storage.dao.api.IMessageDao;
 
 
 public class MessageDaoFactory {

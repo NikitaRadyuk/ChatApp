@@ -3,7 +3,7 @@ package by.it.jd2.Mk_JD2_103_23.chatApp.service;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.CredentialsDTO;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
-import by.it.jd2.Mk_JD2_103_23.chatApp.dao.api.IUserDao;
+import by.it.jd2.Mk_JD2_103_23.chatApp.storage.dao.api.IUserDao;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserLoginService;
 
 import java.util.Collection;

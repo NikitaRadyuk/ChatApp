@@ -2,7 +2,7 @@ package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.listeners;
 
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.Role;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
-import by.it.jd2.Mk_JD2_103_23.chatApp.dao.UserDao;
+import by.it.jd2.Mk_JD2_103_23.chatApp.storage.dao.UserDao;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 
