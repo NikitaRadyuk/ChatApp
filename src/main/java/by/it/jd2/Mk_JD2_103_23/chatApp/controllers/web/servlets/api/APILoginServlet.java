@@ -1,6 +1,6 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets.api;
 
-import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.Credentials;
+import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.CredentialsDTO;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserLoginService;
@@ -32,13 +32,13 @@ public class APILoginServlet extends HttpServlet {
         String login = req.getParameter(USER_PARAM_LOGIN);
         String password = req.getParameter(USER_PARAM_PASSWORD);
 
-        Credentials credentials = new Credentials();
+        CredentialsDTO credentialsDTO = new CredentialsDTO();
 
-        credentials.setLogin(login);
-        credentials.setPassword(password);
+        credentialsDTO.setLogin(login);
+        credentialsDTO.setPassword(password);
 
         try {
-            User user = userLoginService.login(credentials);
+            User user = userLoginService.login(credentialsDTO);
             HttpSession session = req.getSession();
             session.setAttribute("user", user.getLogin());
 

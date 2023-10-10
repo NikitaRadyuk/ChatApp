@@ -7,13 +7,12 @@ import java.util.Collection;
 /**
  * Интерфейс(service), сервис для сохранения данных пользователя
  */
-public interface IUserRegService {
-    /**
-     * сохранение пользователя при регистрации
-     * @param user
-     */
-    void save(User user);
+public interface IUserService {
+    User getUser(String login);
+
+    User sighUp(UserCreateDTO user);
 
     Collection<User> getAllUsers();
 
+    long getCount();
 }

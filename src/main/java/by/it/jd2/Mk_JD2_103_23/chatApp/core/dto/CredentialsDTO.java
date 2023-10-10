@@ -5,14 +5,14 @@ import java.util.Objects;
 /**
  * Сущность данные для входа
  */
-public class Credentials {
+public class CredentialsDTO {
     private String login;
     private String password;
 
-    public Credentials() {
+    public CredentialsDTO() {
     }
 
-    public Credentials(String login, String password) {
+    public CredentialsDTO(String login, String password) {
         this.login = login;
         this.password = password;
     }
@@ -38,7 +38,7 @@ public class Credentials {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Credentials that = (Credentials) o;
+        CredentialsDTO that = (CredentialsDTO) o;
 
         if (!Objects.equals(login, that.login)) return false;
         return Objects.equals(password, that.password);
