@@ -1,9 +1,9 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets.api;
 
-import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.Message;
-import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
+import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.MessageCreateDTO;
+import by.it.jd2.Mk_JD2_103_23.chatApp.service.MessageService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IMessageService;
-import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.MessageServiceFactory;
+import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,10 +21,10 @@ public class APIMessageServlet extends HttpServlet {
     private static final String MESSAGE_PARAM_TEXT = "text";
     private static final String SESSION_PARAM_ATTRIBUTE_NAME = "user";
 
-    private IMessageService messageSendService;
+    private final IMessageService messageSendService;
 
     public APIMessageServlet(){
-        this.messageSendService = MessageServiceFactory.getInstance();
+        this.messageSendService = MessageService.getInstance();
     }
 
     @Override
@@ -32,38 +32,26 @@ public class APIMessageServlet extends HttpServlet {
         resp.setContentType("text/html; charset=utf-8");
         req.setCharacterEncoding("UTF-8");
 
+        HttpSession session = req.getSession();
+
+        User user = (User) session.getAttribute(SESSION_PARAM_ATTRIBUTE_NAME);
+
         String toUser = req.getParameter(MESSAGE_PARAM_TO);
         String messageText = req.getParameter(MESSAGE_PARAM_TEXT);
-        String userFromSession = getValueFromSession(req, SESSION_PARAM_ATTRIBUTE_NAME);
 
-        Message message = new Message();
-        message.setFromUser(userFromSession);
-        message.setToUser(toUser);
+        MessageCreateDTO message = new MessageCreateDTO();
+        message.setFrom(user.getLogin());
+        message.setTo(toUser);
         message.setText(messageText);
 
         try {
             this.messageSendService.send(message);
+            req.setAttribute("success", true);
         }
         catch (IllegalArgumentException e){
-            resp.setStatus(500);
-            resp.getWriter().write(e.getMessage());
-        }
-        catch (ValidationException e){
-            resp.setStatus(400);
-            resp.getWriter().write(e.getMessage());
+            req.setAttribute("error", true);
+            req.setAttribute("message", e.getMessage());
         }
         req.getRequestDispatcher("/ui/user/message.jsp").forward(req, resp);
-    }
-
-    public static String getValueFromSession(HttpServletRequest req, String key) {
-        String val = req.getParameter(key);
-
-        if (val == null) {
-            HttpSession session = req.getSession();
-            if (!session.isNew()) {
-                val = (String) session.getAttribute(key);
-            }
-        }
-        return val;
     }
 }

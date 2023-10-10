@@ -14,9 +14,6 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-/**
- * Сервлет, на который отправляются данные для входа при помощи POST запроса
- */
 @WebServlet(urlPatterns = "/api/login")
 public class APILoginServlet extends HttpServlet {
     private static final String USER_PARAM_LOGIN = "login";
@@ -53,13 +50,10 @@ public class APILoginServlet extends HttpServlet {
             resp.getWriter().write(e.getMessage());
         }
     }
-
+/*
     public static void saveSession(HttpServletRequest req, String key, String val) {
         HttpSession session = req.getSession();
         session.setAttribute(key, val);
-    }
+    }*/
 }
 
-
-
-//в методе doGet указать setAttribute()

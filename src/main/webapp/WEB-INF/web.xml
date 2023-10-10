@@ -7,15 +7,17 @@
         metadata-complete = "false">
 
     <display-name>Chat Application</display-name>
-    <description>There you can choose your preferences</description>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 
     <listener>
         <listener-class>by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.listeners.SessionChangeListener</listener-class>
     </listener>
 
-    <!--<servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>*.html</url-pattern>
-    </servlet-mapping>
+    <listener>
+        <listener-class>by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.listeners.DefaultDataInitializer</listener-class>
+    </listener>
 -->
 </web-app>

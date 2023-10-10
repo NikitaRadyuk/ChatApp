@@ -1,7 +1,7 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets.ui.admin;
 
-import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IAdminService;
-import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.AdminServiceFactory;
+import by.it.jd2.Mk_JD2_103_23.chatApp.service.StatisticsService;
+import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IStatisticsService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,19 +9,23 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 @WebServlet(urlPatterns = "/api/admin/statistics")
 public class StatisticsServlet extends HttpServlet {
-    private IAdminService adminService = AdminServiceFactory.getInstance();
+    private final IStatisticsService statisticsService;
 
-    public StatisticsServlet(IAdminService adminService) {
-        this.adminService = StatisticsService.getInstance();
+    public StatisticsServlet() {
+        this.statisticsService = StatisticsService.getInstance();
     }
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("messages", this.adminService.getMessageCount());
-        req.setAttribute("activeUsers", this.adminService.getActiveUsers());
+        resp.setCharacterEncoding(StandardCharsets.UTF_8.toString());
+        resp.setContentType("text/html; charset=utf-8");
+
+        req.setAttribute("stats", statisticsService.getStats());
 
         req.getRequestDispatcher("/ui/admin/statistics.jsp").forward(req, resp);
     }

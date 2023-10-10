@@ -17,16 +17,28 @@
     <title>Главная страница</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/api/" method="POST">
-<p>Login:</p>
-<input type="hidden" name="Login"/>
-<p><input name="loginBtn" type="submit" value="Login" />
+<p>Добро пожаловать, <c:choose>
+            <c:when test="${pageContext.session != null && sessionScope.user != null}">
+                ${sessionScope.user.fullname}
+            </c:when>
+            <c:otherwise>
+                Гость
+            </c:otherwise>
+        </c:choose>
 </p>
-</form>
-<form action="${pageContext.request.contextPath}/api/" method="POST">
-<p>Registration:</p>
-    <input type="hidden" name="Registration"/>
-<p><input name="regBtn" type="submit" value="Registration" /></p>
-</form>
+<c:choose>
+    <c:when test="${sessionScope.user == null}">
+        <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/ui/signIn';" value="Войти" /></p>
+        <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/ui/signUp';" value="Зарегистрироваться" /></p>
+    </c:when>
+    <c:otherwise>
+        <c:if test="${'ADMIN'.equals(sessionScope.user.role.name())}">
+            <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/ui/admin/statistics';" value="Статистика" /></p>
+        </c:if>
+        <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/ui/user/chats';" value="Мои сообщения" /></p>
+        <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/ui/user/message';" value="Отправить сообщение" /></p>
+        <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/ui/user/logout';" value="Выйти" /></p>
+    </c:otherwise>
+</c:choose>
 </body>
 </html>

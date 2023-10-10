@@ -1,5 +1,6 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets.api;
 
+import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.UserCreateDTO;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserRegService;
@@ -18,7 +19,7 @@ public class APIUserServlet extends HttpServlet {
     private static final String LOGIN_PARAM_NAME = "login";
     private static final String PASSWORD_PARAM_NAME = "password";
     private static final String FULL_USER_PARAM_NAME = "username";
-    private static final String BDAY_PARAM_NAME = "birthday";
+    private static final String BIRTHDAY_PARAM_NAME = "birthday";
 
     private IUserRegService userRegService = UserRegServiceFactory.getInstance();
 
@@ -30,17 +31,18 @@ public class APIUserServlet extends HttpServlet {
         String login = req.getParameter(LOGIN_PARAM_NAME);
         String password = req.getParameter(PASSWORD_PARAM_NAME);
         String username = req.getParameter(FULL_USER_PARAM_NAME);
-        String birthday = req.getParameter(BDAY_PARAM_NAME);
+        String birthday = req.getParameter(BIRTHDAY_PARAM_NAME);
 
-        User user = new User();
+        UserCreateDTO user = new UserCreateDTO();
         user.setLogin(login);
         user.setPassword(password);
-        user.setUserName(username);
+        user.setFullname(username);
         user.setBirthday(LocalDate.parse(birthday));
 
         try{
-            userRegService.save(user);
-            req.getRequestDispatcher("/ui/sighIn.jsp");
+            User signedUpUser = this.userRegService.sighUp(user);
+            req.getSession().setAttribute("user", signedUpUser);
+            req.getRequestDispatcher("/ui/sighIn.jsp").forward(req, resp);
         } catch (IllegalArgumentException e){
             resp.setStatus(500);
             resp.getWriter().write(e.getMessage());
