@@ -17,19 +17,29 @@
     <title>Главная страница</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/api/login" method="POST">
-    <p style="text-align:center">Authorization:</p>
-
+<c:choose>
+    <c:when test="${sessionScope.user != null}">
+        <p>Вы уже вошли, хотите выйти?</p>
+        <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/logout'" value="Выйти" /></p>
+    </c:when>
+    <c:otherwise>
+    <c:choose>
+        <c:when test="${requestScope.error}">
+            <p style="color:red;">${requestScope.message}</p>
+        </c:when>
+        <c:otherwise>
+            <p>Входите!</p>
+        </c:otherwise>
+</c:choose>
+<form action="${pageContext.request.contextPath}/api/login" method="post">
     <p>Login:</p>
-    <c:set var="login" />
-    <p><input maxlength="15" name="login" required="required" size="10" type="text" placeholder="login"/></p>
-
+    <p><input type="text" name="login" /></p>
     <p>Password:</p>
-    <c:set var="password" />
-    <p><input maxlength="15" name="password" required="required" size="10" type="password" placeholder="password"/></p>
-
-    <p><input name="loginBtn" type="submit" value="Login" /></p>
-
+    <p><input type="password" name="Login" /></p>
+    <p><input type="submit" name="Login" /></p>
+    <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/ui/';" value="index" /></p>
+    </c:otherwise>
+</c:choose>
 </form>
 </body>
 </html>

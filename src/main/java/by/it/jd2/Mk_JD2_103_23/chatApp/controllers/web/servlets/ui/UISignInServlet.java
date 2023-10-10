@@ -8,13 +8,10 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-/**
- * Сервлет, на который отправляются данные при регистрации при помощи POST запроса
- */
-@WebServlet(urlPatterns = "/ui/reg")
-public class UIRegServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/ui/signIn")
+public class UISignInServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/ui/signUp.jsp").forward(req, resp);
+        req.getRequestDispatcher("/ui/signIn.jsp").forward(req, resp);
     }
 }

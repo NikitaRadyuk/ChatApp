@@ -17,6 +17,14 @@
     <title>Регистрация</title>
 </head>
 <body>
+<c:choose>
+    <c:when test="${requestScope.error}">
+        <p style="color:red;">${requestScope.message}</p>
+    </c:when>
+    <c:otherwise>
+        <p>Пройдите регистрацию</p>
+    </c:otherwise>
+</c:choose>
 <form action="${pageContext.request.contextPath}/api/reg" method="POST">
 
     <p style="text-align:center">Регистрация</p>
@@ -28,7 +36,7 @@
 
     <label>Пароль
         <c:set var="password" />
-        <p><input maxlength="15" name="password" required="required" size="10" type="text" value="${password}" /></p>
+        <p><input maxlength="15" name="password" required="required" size="10" type="password" value="${password}" /></p>
     </label>
 
     <label>ФИО
@@ -42,7 +50,8 @@
     </label>
 
 
-    <p><input name="regBtn" type="submit" value="Зарегистрироваться" /></p>
+    <p><input type="submit" value="Зарегистрироваться" /></p>
+    <p><input type="button" onclick="location.href='${pageContext.request.contextPath}/'" value="index" /></p>
 </form>
 </body>
 </html>

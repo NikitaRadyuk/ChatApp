@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-@WebServlet(urlPatterns = "/api/admin/statistics")
+@WebServlet(urlPatterns = "/ui/admin/statistics")
 public class StatisticsServlet extends HttpServlet {
     private final IStatisticsService statisticsService;
 
