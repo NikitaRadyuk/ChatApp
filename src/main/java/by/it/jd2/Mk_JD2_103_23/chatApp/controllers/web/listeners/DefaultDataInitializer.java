@@ -5,11 +5,12 @@ import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.dao.UserDao;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
+import jakarta.servlet.annotation.WebListener;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-
+@WebListener()
 public class DefaultDataInitializer implements ServletContextListener{
     @Override
     public void contextInitialized(ServletContextEvent sce) {

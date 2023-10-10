@@ -16,8 +16,8 @@
     <c:forEach items="${requestScope.chat}"
                var="message">
         <tr>
-            <td width="20%">${message.from}</td>
-            <td width="20%">${message.sendDate}</td>
+            <td width="20%">${message.fromUser}</td>
+            <td width="20%">${message.sendingDateTime}</td>
             <td width="60%"><c:out value="${message.text}" escapeXml="true"/></td>
         </tr>
     </c:forEach>
