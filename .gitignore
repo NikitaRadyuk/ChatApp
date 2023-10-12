@@ -2,6 +2,7 @@ target/
 log/
 .idea/
 *.iml
+messanger.sql
 
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
