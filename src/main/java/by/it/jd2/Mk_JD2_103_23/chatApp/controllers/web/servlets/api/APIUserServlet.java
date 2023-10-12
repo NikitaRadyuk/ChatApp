@@ -14,14 +14,14 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
 
-@WebServlet(urlPatterns = "/api/reg")
+@WebServlet(name="ApiUserSrvlet", urlPatterns = "/api/reg")
 public class APIUserServlet extends HttpServlet {
     private static final String LOGIN_PARAM_NAME = "login";
     private static final String PASSWORD_PARAM_NAME = "password";
     private static final String FULL_USER_PARAM_NAME = "username";
     private static final String BIRTHDAY_PARAM_NAME = "birthday";
 
-    private IUserRegService userRegService = UserRegServiceFactory.getInstance();
+    private final IUserRegService userRegService = UserRegServiceFactory.getInstance();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,14 +42,15 @@ public class APIUserServlet extends HttpServlet {
         try{
             User signedUpUser = this.userRegService.sighUp(user);
             req.getSession().setAttribute("user", signedUpUser);
-            req.getRequestDispatcher("/ui/sighIn.jsp").forward(req, resp);
-        } catch (IllegalArgumentException e){
-            resp.setStatus(500);
-            resp.getWriter().write(e.getMessage());
-        }
-        catch (ValidationException e){
-            resp.setStatus(400);
-            resp.getWriter().write(e.getMessage());
+            resp.sendRedirect(req.getContextPath() + "/");
+        } catch(ValidationException e) {
+            req.setAttribute("error", true);
+            req.setAttribute("message", e.getMessage());
+            req.getRequestDispatcher("/ui/signUp.jsp").forward(req, resp);
+        }catch(IllegalArgumentException e){
+            req.setAttribute("error", true);
+            req.setAttribute("message", e.getMessage());
+            req.getRequestDispatcher("/ui/signUp.jsp").forward(req, resp);
         }
     }
 }

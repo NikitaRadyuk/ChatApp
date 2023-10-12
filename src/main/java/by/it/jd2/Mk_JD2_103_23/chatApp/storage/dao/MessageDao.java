@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class MessageDao implements IMessageDao {
+    private static final MessageDao instance = new MessageDao();
     private final Map<String, List<Message>> messages = new ConcurrentHashMap<>();
     @Override
     public void sendMessage(String login, Message message) {
@@ -28,5 +29,7 @@ public class MessageDao implements IMessageDao {
     public long getCount() {
         return this.messages.values().stream().mapToInt(List::size).sum();
     }
+
+    public static MessageDao getInstance(){return instance;}
 
 }

@@ -41,7 +41,7 @@
 
     <label>ФИО
         <c:set var="username" />
-        <p><input maxlength="50" name="ФИО" required="required" size="10" type="text" value="${username}" /></p>
+        <p><input maxlength="50" name="username" required="required" size="10" type="text" value="${username}" /></p>
     </label>
 
     <label>День рождения

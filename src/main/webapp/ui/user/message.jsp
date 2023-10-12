@@ -19,7 +19,7 @@
         <p style="color:red;">${requestScope.message}</p>
     </c:when>
     <c:otherwise>
-        <p>${sessionScope.user.username}, быстрее отправь сообщение!</p>
+        <p>${sessionScope.user.userName}, быстрее отправь сообщение!</p>
     </c:otherwise>
 </c:choose>
 <form action="${pageContext.request.contextPath}/api/message" method="POST">
@@ -28,7 +28,7 @@
         <tr>
             <td>Recipient:</td>
             <td>
-                <input type="text" name="recipient" value="${param.to}">
+                <input type="text" name="to" value="${param.to}">
             </td>
         </tr>
         <tr>

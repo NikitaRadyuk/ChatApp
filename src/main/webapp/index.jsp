@@ -19,7 +19,7 @@
 <body>
 <p>Добро пожаловать, <c:choose>
             <c:when test="${pageContext.session != null && sessionScope.user != null}">
-                ${sessionScope.user.username}
+                ${sessionScope.user.userName}
             </c:when>
             <c:otherwise>
                 Гость
