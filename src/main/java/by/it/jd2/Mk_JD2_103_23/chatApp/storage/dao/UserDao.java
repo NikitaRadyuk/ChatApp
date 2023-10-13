@@ -7,6 +7,7 @@ import by.it.jd2.Mk_JD2_103_23.chatApp.storage.dao.api.IUserDao;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,7 @@ public class UserDao implements IUserDao {
 
     private final String ADD_USER_IN_DB = "INSERT INTO messanger.\"user\"(login, password, username, birthday, reg_date, role) VALUES (?, ?, ?, ?, ?, ?);";
 
-    private static final String GET_ALL_USERS = "SELECT login, password, username, birthday, reg_date, role FROM messanger.\"user\";";
+    private static final String GET_ALL_USERS_IN_DB = "SELECT login, password, username, birthday, reg_date, role FROM messanger.\"user\";";
 
     private final Map<String, User> users = new HashMap<>();
 
@@ -39,7 +40,7 @@ public class UserDao implements IUserDao {
           ps.setString(1,user.getLogin());
           ps.setString(2,user.getPassword());
           ps.setString(3,user.getUserName());
-          ps.setObject(4,user.getBirthday());
+          ps.setDate(4, Date.valueOf(user.getBirthday()));
           ps.setObject(5,user.getRegisterDate());
           ps.setString(6,user.getRole().name());
 
@@ -58,7 +59,7 @@ public class UserDao implements IUserDao {
     public Collection<User> getAllUsers() {
         try(
                 Connection conn = ds.getConnection();
-                PreparedStatement ps = conn.prepareStatement(GET_ALL_USERS);
+                PreparedStatement ps = conn.prepareStatement(GET_ALL_USERS_IN_DB);
                 ResultSet rs = ps.executeQuery();
                 ){
             List<User> dataDB = new ArrayList<>();
