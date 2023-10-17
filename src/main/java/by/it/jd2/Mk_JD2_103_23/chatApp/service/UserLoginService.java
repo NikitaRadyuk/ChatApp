@@ -20,22 +20,14 @@ public class UserLoginService implements IUserLoginService {
 
     @Override
     public User login(CredentialsDTO credentialsDTO) {
-        User value = null;
-        Collection<User> allUsers = getAllUsers();
-        for (User user : allUsers) {
-            String credentialsLogin = credentialsDTO.getLogin();
-            String userLogin = user.getLogin();
-            if (credentialsLogin.equals(userLogin)) {
-                String credentialsPassword = credentialsDTO.getPassword();
-                String userPassword = user.getPassword();
-                if (!credentialsPassword.equals(userPassword)) {
-                    throw new ValidationException("Неверный пароль");
-                }
-                value = user;
-            }
-        }
+        User value = userDao.getUser(credentialsDTO.getLogin());
         if (value == null){
             throw new ValidationException("Пользователь не найден");
+        }
+        String credentialsPassword = credentialsDTO.getPassword();
+        String userPassword = value.getPassword();
+        if (!credentialsPassword.equals(userPassword.trim())) {
+             throw new ValidationException("Неверный пароль");
         }
         return value;
     }

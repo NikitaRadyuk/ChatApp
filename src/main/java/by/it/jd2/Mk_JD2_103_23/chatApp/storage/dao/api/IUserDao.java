@@ -9,7 +9,7 @@ import java.util.Collection;
  */
 public interface IUserDao {
     void saveUser(User user);
-    /*User getUser(String login);*/
+    User getUser(String login);
     Collection<User> getAllUsers();
 
     long getCount();

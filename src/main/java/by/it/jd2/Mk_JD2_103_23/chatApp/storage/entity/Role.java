@@ -20,4 +20,12 @@ public enum Role {
     public int getRoleId() {
         return roleId;
     }
+
+    public static Role getValueOf(String name){
+        if(name == "ADMIN"){
+            return ADMIN;
+        }else{
+            return USER;
+        }
+    }
 }

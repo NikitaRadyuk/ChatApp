@@ -46,7 +46,7 @@ public class MessageDao implements IMessageDao {
                 ){
             stm.setString(1, message.getFromUser());
             stm.setString(2, message.getToUser());
-            stm.setDate(3, Date.valueOf(message.getSendingDateTime().toLocalDate()));
+            stm.setDate(3, Date.valueOf(message.getSendingDateTime()));
             stm.setString(4, message.getText());
 
             stm.execute();
@@ -66,7 +66,7 @@ public class MessageDao implements IMessageDao {
                     Message message = new Message();
                     message.setFromUser(rs.getString("sender_name"));
                     message.setToUser(rs.getString("recipient_name"));
-                    message.setSendingDateTime(rs.getTimestamp("sending_time").toLocalDateTime());
+                    message.setSendingDateTime(rs.getDate("sending_time").toLocalDate());
                     message.setText(rs.getString("text"));
 
                     chat.add(message);

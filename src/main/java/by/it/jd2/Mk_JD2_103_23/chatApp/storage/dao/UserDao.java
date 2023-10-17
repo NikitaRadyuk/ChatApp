@@ -23,6 +23,8 @@ public class UserDao implements IUserDao {
     private static final String GET_ALL_USERS = "SELECT login, password, username, birthday, reg_date, role FROM messanger.user;";
 
     public static final String GET_USERS_COUNT = "SELECT COUNT(*) AS count_users FROM messanger.user;";
+
+    public static final String GET_USER_BY_LOGIN = "SELECT login, password, username, birthday, reg_date, role FROM messanger.user WHERE login = ?;";
     private final Map<String, User> users = new HashMap<>();
 
     private final DataSource ds;
@@ -53,13 +55,33 @@ public class UserDao implements IUserDao {
             throw new IllegalStateException("Ошибка сохранения пользователя в БД", e);
         }
     }
-/*
+
 
     @Override
     public User getUser(String login) {
-        return this.users.get(login);
+
+        try(
+                Connection conn = ds.getConnection();
+                PreparedStatement ps = conn.prepareStatement(GET_ALL_USERS);
+                ResultSet rs = ps.executeQuery();
+        ){
+            if(rs.next()) {
+                User user = new User();
+                user.setLogin(rs.getString("login").trim());
+                user.setPassword(rs.getString("password").trim());
+                user.setUserName(rs.getString("username").trim());
+                user.setBirthday(rs.getDate("birthday").toLocalDate());
+                user.setRegisterDate(rs.getDate("reg_date").toLocalDate());
+                user.setRole(Role.getValueOf(rs.getString("role")));
+
+                return user;
+            }
+        }catch (SQLException e) {
+            throw new IllegalStateException("Ошибка при получении данных о всех пользователях", e);
+        }
+        return null;
     }
-*/
+
 
     @Override
     public Collection<User> getAllUsers() {
@@ -72,27 +94,21 @@ public class UserDao implements IUserDao {
 
             while(rs.next()){
                 User user = new User();
-                user.setLogin(rs.getString("login"));
-                user.setPassword(rs.getString("password"));
-                user.setUserName(rs.getString("username"));
+                user.setLogin(rs.getString("login").trim());
+                user.setPassword(rs.getString("password").trim());
+                user.setUserName(rs.getString("username").trim());
                 user.setBirthday(rs.getDate("birthday").toLocalDate());
                 user.setRegisterDate(rs.getDate("reg_date").toLocalDate());
-                user.setRole(Role.valueOf(rs.getString("role")));
+                user.setRole(Role.getValueOf(rs.getString("role")));
 
                 dataDB.add(user);
             }
 
-            List<User> dataLocalList = new ArrayList<>(this.users.values());
-
-            boolean areEqual = dataLocalList.equals(dataDB);
-
-            if (areEqual){
                 return dataDB;
-            }
+
         } catch (SQLException e) {
             throw new IllegalStateException("Ошибка при получении данных о всех пользователях", e);
         }
-        return null;
     }
 
     @Override

@@ -7,6 +7,7 @@ import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.Message;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IMessageService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class MessageService implements IMessageService {
         messageEntity.setFromUser(message.getFrom());
         messageEntity.setToUser(message.getTo());
         messageEntity.setText(message.getText());
-        messageEntity.setSendingDateTime(LocalDateTime.now());
+        messageEntity.setSendingDateTime(LocalDate.now());
 
         this.chatStorage.sendMessage(messageEntity.getToUser(), messageEntity);
     }

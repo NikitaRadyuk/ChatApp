@@ -1,6 +1,7 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -8,7 +9,7 @@ import java.util.Objects;
  * Сущность Сообщение
  */
 public class Message implements Serializable {
-    private LocalDateTime sendingDateTime;
+    private LocalDate sendingDateTime;
     private String fromUser;
     private String toUser;
     private String text;
@@ -17,17 +18,17 @@ public class Message implements Serializable {
     }
 
     public Message(String fromUser, String toUser, String text) {
-        this.sendingDateTime = LocalDateTime.now();
+        this.sendingDateTime = LocalDate.now();
         this.fromUser = fromUser;
         this.toUser = toUser;
         this.text = text;
     }
 
-    public LocalDateTime getSendingDateTime() {
+    public LocalDate getSendingDateTime() {
         return sendingDateTime;
     }
 
-    public void setSendingDateTime(LocalDateTime sendingDateTime) {
+    public void setSendingDateTime(LocalDate sendingDateTime) {
         this.sendingDateTime = sendingDateTime;
     }
 
