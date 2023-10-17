@@ -6,7 +6,7 @@ import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
 import java.util.Collection;
 
 /**
- * Интерфейс, сервис для авторизации пользователя
+ * Интерфейс Сервис для авторизации пользователя
  */
 public interface IUserLoginService {
 

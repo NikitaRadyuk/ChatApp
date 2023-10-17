@@ -2,6 +2,9 @@ package by.it.jd2.Mk_JD2_103_23.chatApp.service.api;
 
 import java.util.Map;
 
+/**
+ * Интерфейс статистики
+ */
 public interface IStatisticsService {
     long incSessionCount();
     long decSessionCount();

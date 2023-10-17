@@ -3,7 +3,7 @@ package by.it.jd2.Mk_JD2_103_23.chatApp.core.dto;
 import java.util.Objects;
 
 /**
- * Сущность данные для входа
+ * DTO "данные для входа"
  */
 public class CredentialsDTO {
     private String login;

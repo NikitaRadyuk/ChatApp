@@ -8,6 +8,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+/**
+ * Класс-сервлет для отображения отправки сообщений другим пользователям
+ */
 @WebServlet(urlPatterns = "/ui/user/message")
 public class UIMessageServlet extends HttpServlet {
     @Override

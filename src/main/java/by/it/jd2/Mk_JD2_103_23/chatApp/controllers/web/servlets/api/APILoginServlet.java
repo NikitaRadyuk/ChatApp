@@ -12,6 +12,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+/**
+ * Класс-сервлет для авторизации пользователя
+ */
 @WebServlet(name="ApiLoginServlet", urlPatterns = "/api/login")
 public class APILoginServlet extends HttpServlet {
     private static final String USER_PARAM_LOGIN = "login";

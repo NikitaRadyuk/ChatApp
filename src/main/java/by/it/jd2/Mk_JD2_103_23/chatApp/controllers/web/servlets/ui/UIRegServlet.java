@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Сервлет, на который отправляются данные при регистрации при помощи POST запроса
+ * Сервлет, который отображает регистрацию пользователя
  */
 @WebServlet(urlPatterns = "/ui/signUp")
 public class UIRegServlet extends HttpServlet {

@@ -1,6 +1,6 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets.api;
 
-import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.UserCreateDTO;
+import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.UserDTO;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserRegService;
@@ -14,7 +14,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
 
-@WebServlet(name="ApiUserSrvlet", urlPatterns = "/api/reg")
+/**
+ * Класс-сервлет для регистрации пользователей
+ */
+@WebServlet(urlPatterns = "/api/reg")
 public class APIUserServlet extends HttpServlet {
     private static final String LOGIN_PARAM_NAME = "login";
     private static final String PASSWORD_PARAM_NAME = "password";
@@ -33,7 +36,7 @@ public class APIUserServlet extends HttpServlet {
         String username = req.getParameter(FULL_USER_PARAM_NAME);
         String birthday = req.getParameter(BIRTHDAY_PARAM_NAME);
 
-        UserCreateDTO user = new UserCreateDTO();
+        UserDTO user = new UserDTO();
         user.setLogin(login);
         user.setPassword(password);
         user.setFullname(username);

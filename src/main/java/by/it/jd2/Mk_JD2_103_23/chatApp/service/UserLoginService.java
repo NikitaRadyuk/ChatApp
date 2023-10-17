@@ -12,10 +12,6 @@ import java.util.Collection;
  * Реализация авторизации пользователя
  */
 public class UserLoginService implements IUserLoginService {
-    /**
-     * авторизация пользователя
-     * @param credentials набор данных из авторизации пользователя
-     */
     private IUserDao userDao;
 
     public UserLoginService(IUserDao userDao) {

@@ -1,6 +1,6 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.service;
 
-import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.MessageCreateDTO;
+import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.MessageDTO;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.dao.api.IMessageDao;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.dao.factory.MessageDaoFactory;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.Message;
@@ -21,7 +21,7 @@ public class MessageService implements IMessageService {
         this.chatStorage = MessageDaoFactory.getInstance();
     }
     @Override
-    public void send(MessageCreateDTO message) {
+    public void send(MessageDTO message) {
         if (message.getTo() == null || message.getTo().isBlank()){
             throw new IllegalArgumentException("Выберите получателя сообщения");
         }

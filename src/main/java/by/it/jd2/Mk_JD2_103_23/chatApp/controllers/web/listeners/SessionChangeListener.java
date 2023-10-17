@@ -6,6 +6,9 @@ import jakarta.servlet.annotation.WebListener;
 import jakarta.servlet.http.HttpSessionAttributeListener;
 import jakarta.servlet.http.HttpSessionBindingEvent;
 
+/**
+ * Класс-лисенер для подсчета и записи в статистику кол-ва активных пользователей
+ */
 @WebListener()
 public class SessionChangeListener implements HttpSessionAttributeListener {
     private IStatisticsService statisticsService;

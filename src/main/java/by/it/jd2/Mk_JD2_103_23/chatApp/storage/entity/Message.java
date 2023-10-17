@@ -7,7 +7,6 @@ import java.util.Objects;
 /**
  * Сущность Сообщение
  */
-
 public class Message implements Serializable {
     private LocalDateTime sendingDateTime;
     private String fromUser;

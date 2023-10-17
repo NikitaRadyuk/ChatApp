@@ -2,7 +2,10 @@ package by.it.jd2.Mk_JD2_103_23.chatApp.core.dto;
 
 import java.time.LocalDate;
 
-public class UserCreateDTO {
+/**
+ * DTO "Пользователь"
+ */
+public class UserDTO {
     private String login;
     private String password;
     private String fullname;

@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
 
+/**
+ * Класс-сервлет для отображения всех зарегистрированных пользователей(для Админа)
+ */
 @WebServlet(urlPatterns = "/admin/users")
 public class UsersServlet extends HttpServlet {
     private final IUserRegService userRegService;

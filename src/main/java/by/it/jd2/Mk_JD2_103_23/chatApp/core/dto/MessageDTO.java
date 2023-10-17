@@ -1,6 +1,9 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.core.dto;
 
-public class MessageCreateDTO {
+/**
+ * DTO "Сообщение"
+ */
+public class MessageDTO {
     private String from;
     private String to;
     private String text;

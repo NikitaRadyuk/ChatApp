@@ -1,6 +1,6 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.service;
 
-import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.UserCreateDTO;
+import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.UserDTO;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.dao.api.IUserDao;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.Role;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
@@ -20,13 +20,13 @@ public class UserRegService implements IUserRegService {
         this.userDao = userDao;
     }
 
-    @Override
+    /*@Override
     public User getUser(String login) {
         return this.userDao.getUser(login);
-    }
+    }*/
 
     @Override
-    public User sighUp(UserCreateDTO user) {
+    public User sighUp(UserDTO user) {
         if (user.getLogin() == null || user.getPassword() == null || user.getFullname() == null || user.getBirthday() == null){
             throw new IllegalArgumentException("Проверьте форму заполнения. Все поля должны быть заполнены");
         }

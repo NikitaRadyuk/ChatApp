@@ -1,6 +1,6 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets.api;
 
-import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.MessageCreateDTO;
+import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.MessageDTO;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.MessageService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IMessageService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
@@ -13,7 +13,9 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-
+/**
+ * Класс-сервлет для отправки сообщений
+ */
 @WebServlet(name="ApiMessageServlet", urlPatterns = "/api/message")
 public class APIMessageServlet extends HttpServlet {
 
@@ -39,7 +41,7 @@ public class APIMessageServlet extends HttpServlet {
         String toUser = req.getParameter(MESSAGE_PARAM_TO);
         String messageText = req.getParameter(MESSAGE_PARAM_TEXT);
 
-        MessageCreateDTO message = new MessageCreateDTO();
+        MessageDTO message = new MessageDTO();
         message.setFrom(user.getLogin());
         message.setTo(toUser);
         message.setText(messageText);

@@ -8,6 +8,9 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
+/**
+ * Класс-фильтр для проверки, авторизирован ли пользователь
+ */
 @WebFilter(urlPatterns = {"/ui/users/*", "/api/message"})
 public class UserSecurityFilter implements Filter {
     @Override

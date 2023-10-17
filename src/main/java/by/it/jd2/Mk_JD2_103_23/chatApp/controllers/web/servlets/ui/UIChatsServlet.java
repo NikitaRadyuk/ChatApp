@@ -14,6 +14,9 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Класс-сервлет для отображения сообщений, отправленных авторизированному пользователю
+ */
 @WebServlet(urlPatterns = "/ui/user/chats")
 public class UIChatsServlet extends HttpServlet {
     private final IMessageService messageService;

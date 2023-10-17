@@ -13,12 +13,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
+/**
+ * Реализация ДАО пользователей
+ */
 public class UserDao implements IUserDao {
 
-    private final String ADD_USER_IN_DB = "INSERT INTO messanger.\"user\"(login, password, username, birthday, reg_date, role) VALUES (?, ?, ?, ?, ?, ?);";
+    private final String INSERT_USER = "INSERT INTO messanger.user(login, password, username, birthday, reg_date, role) VALUES (?, ?, ?, ?, ?, ?);";
 
-    private static final String GET_ALL_USERS_IN_DB = "SELECT login, password, username, birthday, reg_date, role FROM messanger.\"user\";";
+    private static final String GET_ALL_USERS = "SELECT login, password, username, birthday, reg_date, role FROM messanger.user;";
 
+    public static final String GET_USERS_COUNT = "SELECT COUNT(*) AS count_users FROM messanger.user;";
     private final Map<String, User> users = new HashMap<>();
 
     private final DataSource ds;
@@ -35,7 +39,7 @@ public class UserDao implements IUserDao {
         this.users.put(user.getLogin(), user);
 
         try(Connection conn = ds.getConnection();
-            PreparedStatement ps = conn.prepareStatement(ADD_USER_IN_DB);
+            PreparedStatement ps = conn.prepareStatement(INSERT_USER);
         ){
           ps.setString(1,user.getLogin());
           ps.setString(2,user.getPassword());
@@ -49,31 +53,33 @@ public class UserDao implements IUserDao {
             throw new IllegalStateException("Ошибка сохранения пользователя в БД", e);
         }
     }
+/*
 
     @Override
     public User getUser(String login) {
         return this.users.get(login);
     }
+*/
 
     @Override
     public Collection<User> getAllUsers() {
         try(
                 Connection conn = ds.getConnection();
-                PreparedStatement ps = conn.prepareStatement(GET_ALL_USERS_IN_DB);
+                PreparedStatement ps = conn.prepareStatement(GET_ALL_USERS);
                 ResultSet rs = ps.executeQuery();
                 ){
             List<User> dataDB = new ArrayList<>();
 
             while(rs.next()){
-                User item = new User();
-                item.setLogin(rs.getString("login"));
-                item.setPassword(rs.getString("password"));
-                item.setUserName(rs.getString("username"));
-                item.setBirthday(rs.getDate("birthday").toLocalDate());
-                item.setRegisterDate(rs.getDate("reg_date").toLocalDate());
-                item.setRole(Role.valueOf(rs.getString("role")));
+                User user = new User();
+                user.setLogin(rs.getString("login"));
+                user.setPassword(rs.getString("password"));
+                user.setUserName(rs.getString("username"));
+                user.setBirthday(rs.getDate("birthday").toLocalDate());
+                user.setRegisterDate(rs.getDate("reg_date").toLocalDate());
+                user.setRole(Role.valueOf(rs.getString("role")));
 
-                dataDB.add(item);
+                dataDB.add(user);
             }
 
             List<User> dataLocalList = new ArrayList<>(this.users.values());
@@ -91,7 +97,15 @@ public class UserDao implements IUserDao {
 
     @Override
     public long getCount() {
-        return this.users.size();
+        long count = 0;
+        try(Connection conn = ds.getConnection();
+            PreparedStatement ps = conn.prepareStatement(GET_USERS_COUNT);
+            ResultSet rs = ps.executeQuery()){
+            count = rs.getInt("count_users");
+            return count;
+        } catch (SQLException e) {
+            throw new IllegalStateException("Ошибка при получении количества пользователей", e);
+        }
     }
 
     public static UserDao getInstance(){return instance;}

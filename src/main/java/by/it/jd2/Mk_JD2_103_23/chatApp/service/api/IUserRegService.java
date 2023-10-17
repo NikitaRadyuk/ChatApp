@@ -1,17 +1,17 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.service.api;
 
-import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.UserCreateDTO;
+import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.UserDTO;
 import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
 
 import java.util.Collection;
 
 /**
- * Интерфейс(service), сервис для сохранения данных пользователя
+ * Интерфейс сервис для регистрации пользователя
  */
 public interface IUserRegService {
-    User getUser(String login);
+    /*User getUser(String login);*/
 
-    User sighUp(UserCreateDTO user);
+    User sighUp(UserDTO user);
 
     Collection<User> getAllUsers();
 

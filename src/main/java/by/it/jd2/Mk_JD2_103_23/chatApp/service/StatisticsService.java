@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * Реализация сервиса статистики
+ */
 public class StatisticsService implements IStatisticsService {
 
     public static final StatisticsService instance = new StatisticsService();

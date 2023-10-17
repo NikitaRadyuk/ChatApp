@@ -10,6 +10,9 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
+/**
+ * Класс-фильтр для проверки, является ли пользователь Админом
+ */
 @WebFilter(urlPatterns = {"/api/admin/*", "/ui/admin/*"})
 public class AdminSecurityFilter implements Filter {
 

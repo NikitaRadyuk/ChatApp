@@ -8,6 +8,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+/**
+ * Класс-сервлет, который отображает страницу авторизации пользователя
+ */
 @WebServlet(urlPatterns = "/ui/signIn")
 public class UISignInServlet extends HttpServlet {
     @Override
