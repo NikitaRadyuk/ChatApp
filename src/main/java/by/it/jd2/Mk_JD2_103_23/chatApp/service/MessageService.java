@@ -47,7 +47,6 @@ public class MessageService implements IMessageService {
         return this.iMessageDao.findAll(String.valueOf(PageRequest.of(pageable.getPage(), pageable.getSize())))
                 .map(MessageService::map);
     }
-
     @Override
     public long getCount() {
         return this.iMessageDao.getCount();
