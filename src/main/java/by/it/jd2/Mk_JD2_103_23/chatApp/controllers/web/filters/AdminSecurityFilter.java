@@ -1,7 +1,7 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.filters;
 
-import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.Role;
-import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
+import by.it.jd2.Mk_JD2_103_23.chatApp.dao.entity.Role;
+import by.it.jd2.Mk_JD2_103_23.chatApp.dao.entity.User;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;

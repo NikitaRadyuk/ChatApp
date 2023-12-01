@@ -2,7 +2,7 @@ package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets.ui.admin;
 
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserRegService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.UserRegServiceFactory;
-import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
+import by.it.jd2.Mk_JD2_103_23.chatApp.dao.entity.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

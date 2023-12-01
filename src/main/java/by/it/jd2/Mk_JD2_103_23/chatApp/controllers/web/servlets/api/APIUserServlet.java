@@ -1,7 +1,7 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets.api;
 
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.UserDTO;
-import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
+import by.it.jd2.Mk_JD2_103_23.chatApp.dao.entity.User;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserRegService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.factory.UserRegServiceFactory;

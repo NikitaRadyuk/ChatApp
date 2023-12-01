@@ -1,7 +1,7 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.service.api;
 
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.CredentialsDTO;
-import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
+import by.it.jd2.Mk_JD2_103_23.chatApp.dao.entity.User;
 
 import java.util.Collection;
 

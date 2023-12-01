@@ -1,16 +1,18 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.service;
 
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.CredentialsDTO;
-import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
+import by.it.jd2.Mk_JD2_103_23.chatApp.dao.entity.User;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
-import by.it.jd2.Mk_JD2_103_23.chatApp.storage.dao.api.IUserDao;
+import by.it.jd2.Mk_JD2_103_23.chatApp.dao.api.IUserDao;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserLoginService;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
 /**
  * Реализация авторизации пользователя
  */
+@Service
 public class UserLoginService implements IUserLoginService {
     private IUserDao userDao;
 
@@ -20,7 +22,7 @@ public class UserLoginService implements IUserLoginService {
 
     @Override
     public User login(CredentialsDTO credentialsDTO) {
-        User value = userDao.getUser(credentialsDTO.getLogin());
+        User value = userDao.findByLogin(credentialsDTO.getLogin());
         if (value == null){
             throw new ValidationException("Пользователь не найден");
         }

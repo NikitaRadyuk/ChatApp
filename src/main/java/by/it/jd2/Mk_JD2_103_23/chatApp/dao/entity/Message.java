@@ -1,17 +1,27 @@
-package by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity;
+package by.it.jd2.Mk_JD2_103_23.chatApp.dao.entity;
 
-import java.io.Serializable;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
  * Сущность Сообщение
  */
-public class Message implements Serializable {
+@Entity
+@Table(schema = "messanger", name = "message")
+public class Message {
+    @Id
+    @Column(name = "sending_time")
     private LocalDate sendingDateTime;
+    @Column(name = "sender_name")
     private String fromUser;
+    @Column(name = "recipient_name")
     private String toUser;
+    @Column(name = "text")
     private String text;
 
     public Message() {

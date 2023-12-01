@@ -1,9 +1,9 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.service;
 
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.UserDTO;
-import by.it.jd2.Mk_JD2_103_23.chatApp.storage.dao.api.IUserDao;
-import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.Role;
-import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
+import by.it.jd2.Mk_JD2_103_23.chatApp.dao.api.IUserDao;
+import by.it.jd2.Mk_JD2_103_23.chatApp.dao.entity.Role;
+import by.it.jd2.Mk_JD2_103_23.chatApp.dao.entity.User;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserRegService;
 
 import java.time.LocalDate;
@@ -19,12 +19,6 @@ public class UserRegService implements IUserRegService {
     public UserRegService(IUserDao userDao) {
         this.userDao = userDao;
     }
-
-    /*@Override
-    public User getUser(String login) {
-        return this.userDao.getUser(login);
-    }*/
-
     @Override
     public User sighUp(UserDTO user) {
         if (user.getLogin() == null || user.getPassword() == null || user.getFullname() == null || user.getBirthday() == null){

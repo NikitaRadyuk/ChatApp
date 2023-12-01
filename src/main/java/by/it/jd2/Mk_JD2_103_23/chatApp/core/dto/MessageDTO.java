@@ -8,6 +8,15 @@ public class MessageDTO {
     private String to;
     private String text;
 
+    public MessageDTO() {
+    }
+
+    public MessageDTO(String from, String to, String text) {
+        this.from = from;
+        this.to = to;
+        this.text = text;
+    }
+
     public String getFrom() {
         return from;
     }

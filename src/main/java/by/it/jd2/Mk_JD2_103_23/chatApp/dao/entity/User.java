@@ -1,4 +1,9 @@
-package by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity;
+package by.it.jd2.Mk_JD2_103_23.chatApp.dao.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -6,13 +11,22 @@ import java.util.Objects;
 /**
  * Класс-сущность Пользователь
  */
+@Entity
+@Table(schema = "messanger", name = "user")
 public class User{
+    @Id
+    @Column(name = "login")
     private String login;
+    @Column(name = "password")
     private String password;
+    @Column(name = "username")
     private String userName;
+    @Column(name = "birthday")
     private LocalDate birthday;
+    @Column(name = "reg_date")
     private LocalDate registerDate;
-    private Role role;
+    @Column(name = "role")
+    private String role;
 
     public User() {
     }
@@ -23,7 +37,7 @@ public class User{
         this.userName = userName;
         this.birthday = birthday;
         registerDate = LocalDate.now();
-        role = Role.USER;
+        role = "USER";
     }
 
 
@@ -62,10 +76,10 @@ public class User{
         this.registerDate = registerDate;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
 

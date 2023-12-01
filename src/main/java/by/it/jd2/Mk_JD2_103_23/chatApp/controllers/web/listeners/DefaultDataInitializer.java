@@ -1,9 +1,9 @@
 package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.listeners;
 
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.exceptions.ValidationException;
-import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.Role;
-import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
-import by.it.jd2.Mk_JD2_103_23.chatApp.storage.dao.UserDao;
+import by.it.jd2.Mk_JD2_103_23.chatApp.dao.entity.Role;
+import by.it.jd2.Mk_JD2_103_23.chatApp.dao.entity.User;
+import by.it.jd2.Mk_JD2_103_23.chatApp.dao.UserDao;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
@@ -20,7 +20,7 @@ public class DefaultDataInitializer implements ServletContextListener{
     public void contextInitialized(ServletContextEvent sce) {
         UserDao userdao = UserDao.getInstance();
         try {
-            if(userdao.getUser("admin") != null){
+            if(userdao.findByLogin("admin") != null){
                 return;
             }
         } catch(ValidationException e){}

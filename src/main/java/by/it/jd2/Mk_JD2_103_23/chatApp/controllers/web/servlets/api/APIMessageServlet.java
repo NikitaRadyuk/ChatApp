@@ -3,7 +3,7 @@ package by.it.jd2.Mk_JD2_103_23.chatApp.controllers.web.servlets.api;
 import by.it.jd2.Mk_JD2_103_23.chatApp.core.dto.MessageDTO;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.MessageService;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IMessageService;
-import by.it.jd2.Mk_JD2_103_23.chatApp.storage.entity.User;
+import by.it.jd2.Mk_JD2_103_23.chatApp.dao.entity.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
