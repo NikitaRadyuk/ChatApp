@@ -29,13 +29,6 @@ public class UserSpecification {
                 }
                 if(filter.getBirthday() != null){
                     Path<LocalDate> birthday = root.get("birthday");
-
-                    predicates.add(
-                            cb.and(
-                                    cb.greaterThanOrEqualTo(birthday, filter.getBirthday()),
-                                    cb.lessThan(birthday, filter.getBirthday().plusDays(1))
-                            )
-                    );
                 }
 
                 return cb.and(predicates.toArray(Predicate[]::new));
