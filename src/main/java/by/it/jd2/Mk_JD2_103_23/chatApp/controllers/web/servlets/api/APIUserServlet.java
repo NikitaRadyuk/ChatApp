@@ -24,7 +24,7 @@ public class APIUserServlet extends HttpServlet {
     private static final String FULL_USER_PARAM_NAME = "username";
     private static final String BIRTHDAY_PARAM_NAME = "birthday";
 
-    private final IUserRegService userRegService = UserRegServiceFactory.getInstance();
+//    private final IUserRegService userRegService = UserRegServiceFactory.getInstance();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

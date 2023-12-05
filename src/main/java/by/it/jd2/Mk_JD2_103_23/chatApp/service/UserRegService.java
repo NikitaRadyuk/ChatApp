@@ -5,6 +5,7 @@ import by.it.jd2.Mk_JD2_103_23.chatApp.dao.api.IUserDao;
 import by.it.jd2.Mk_JD2_103_23.chatApp.dao.entity.Role;
 import by.it.jd2.Mk_JD2_103_23.chatApp.dao.entity.User;
 import by.it.jd2.Mk_JD2_103_23.chatApp.service.api.IUserRegService;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -12,6 +13,7 @@ import java.util.Collection;
 /**
  * Реализация регистрации пользователя
  */
+@Service
 public class UserRegService implements IUserRegService {
 
     private final IUserDao userDao;

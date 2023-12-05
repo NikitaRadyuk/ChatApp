@@ -11,6 +11,16 @@ public class UserDTO {
     private String fullname;
     private LocalDate birthday;
 
+    public UserDTO() {
+    }
+
+    public UserDTO(String login, String password, String fullname, LocalDate birthday) {
+        this.login = login;
+        this.password = password;
+        this.fullname = fullname;
+        this.birthday = birthday;
+    }
+
     public String getLogin() {
         return login;
     }
